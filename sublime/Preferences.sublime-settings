@@ -1,0 +1,64 @@
+{
+	"always_show_minimap_viewport": true,
+	"auto_complete": false,
+	"auto_complete_commit_on_tab": true,
+	"binary_file_patterns":
+	[
+		"*.jpg",
+		"*.jpeg",
+		"*.png",
+		"*.gif",
+		"*.ttf",
+		"*.tga",
+		"*.dds",
+		"*.ico",
+		"*.eot",
+		"*.pdf",
+		"*.swf",
+		"*.jar",
+		"*.zip",
+		"cache/*",
+		"_reports/*",
+		"vendor/*"
+	],
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/User/TwoStones (SL).tmTheme",
+	"copy_with_empty_selection": true,
+	"ensure_newline_at_eof_on_save": true,
+	"font_face": "Roboto Mono",
+	"font_size": 12,
+	"hot_exit": false,
+	"ignored_packages":
+	[
+		"Fuse",
+		"Markdown",
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"index_files": true,
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
+	"material_theme_accent_cyan": true,
+	"material_theme_accent_scrollbars": true,
+	"material_theme_bright_scrollbars": true,
+	"material_theme_compact_sidebar": true,
+	"material_theme_contrast_mode": true,
+	"material_theme_small_statusbar": true,
+	"material_theme_small_tab": true,
+	"material_theme_tabs_separator": true,
+	"material_theme_titlebar": true,
+	"material_theme_tree_headings": true,
+	"mini_diff": false,
+	"open_files_in_new_window": false,
+	"overlay_scroll_bars": "enabled",
+	"tab_size": 4,
+	"theme": "Material-Theme-Palenight.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"update_check": false,
+	"word_wrap": true
+}
