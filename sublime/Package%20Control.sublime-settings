@@ -1,0 +1,37 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Alignment",
+		"All Autocomplete",
+		"AutoDocstring",
+		"AutoPEP8",
+		"BracketHighlighter",
+		"DocBlockr",
+		"DocBlockr_Python",
+		"Dockerfile Syntax Highlighting",
+		"DotENV",
+		"EditorConfig",
+		"Git",
+		"MarkdownEditing",
+		"MarkdownLivePreview",
+		"Material Theme",
+		"Package Control",
+		"Phpcs",
+		"RuboCop",
+		"SideBarEnhancements",
+		"Smarty",
+		"SublimeLinter",
+		"SublimeLinter-contrib-bashate",
+		"SublimeLinter-csslint",
+		"SublimeLinter-eslint",
+		"SublimeLinter-php",
+		"SublimeLinter-rubocop",
+		"Sync Settings",
+		"TabNine",
+		"VCS Gutter"
+	]
+}

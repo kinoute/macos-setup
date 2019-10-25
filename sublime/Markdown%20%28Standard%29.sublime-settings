@@ -1,0 +1,9 @@
+{
+	"color_scheme": "Packages/User/TwoStones (SL).tmTheme",
+	"draw_centered": true,
+	"extensions":
+	[
+		"md"
+	],
+    "mde.keymap_disable.make_page_reference": true
+}

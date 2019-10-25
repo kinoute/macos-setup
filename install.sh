@@ -6,89 +6,6 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-echo "------------------------------"
-echo "Installing Xcode Command Line Tools."
-
-# Install Xcode command line tools
-xcode-select --install
-
-# Check for Homebrew,
-# Install if we don't have it
-if test ! $(which brew); then
-  echo "Installing homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
-# Make sure we’re using the latest Homebrew.
-brew update
-
-# Upgrade any already-installed formulae.
-brew upgrade --all
-
-## Install cask
-brew install cask
-
-# Install GNU core utilities (those that come with OS X are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
-
-# Install some other useful utilities like `sponge`.
-brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed
-
-# languages
-brew install python3
-brew install php
-
-# Install more recent versions of some OS X tools.
-brew install vim --override-system-vi
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
-brew install homebrew/php/php55 --with-gmp
-
-# Install other useful binaries.
-brew install git
-brew install git-lfs
-brew install git-flow
-brew install git-extras
-brew install imagemagick --with-webp
-brew install pv
-brew install rename
-brew install ssh-copy-id
-brew install tree
-brew install pandoc
-brew install jq
-brew install ffmpeg
-brew install ripgrep
-brew install bat
-brew install wget
-
-# Core Casks
-brew cask install --appdir="/Applications" flux
-brew cask install --appdir="/Applications" spotify
-brew cask install --appdir="/Applications" vlc
-brew cask install --appdir="/Applications" the-unarchiver
-
-# Development tool casks
-brew cask install --appdir="/Applications" iterm2
-brew cask install --appdir="/Applications" sublime-text
-brew cask install --appdir="/Applications" virtualbox
-brew cask install --appdir="/Applications" google-chrome
-brew cask install --appdir="/Applications" miniconda
-
-# Install Docker, which requires virtualbox
-brew install docker
-brew install docker-compose
-brew install lazydocker
-
-# Remove outdated versions from the cellar.
-brew cleanup
-
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
@@ -116,6 +33,27 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable smart dashes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
+# Show scrollbars only when scrolling
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+
+# Increase window resize speed for Cocoa applications
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+
+# Change temperature unit
+defaults write -g AppleTemperatureUnit -string "Celsius"
+
+# Set the timezone
+sudo systemsetup -settimezone "Europe/Paris"
+
+# Set the time using the network time
+systemsetup -setusingnetworktime on
+
+# Set the computer sleep time to 15 minutes
+sudo systemsetup -setcomputersleep 15
+
+# Set the harddisk sleep time to 15 minutes
+sudo systemsetup -setharddisksleep 15
+
 ###############################################################################
 # SSD-specific tweaks                                                         #
 # You might want to disable these if you are not running an SSD               #
@@ -140,6 +78,25 @@ sudo chflags uchg /private/var/vm/sleepimage
 sudo pmset -a sms 0
 
 ###############################################################################
+# Login                                                                       #
+###############################################################################
+
+# Disable remote apple events
+systemsetup -setremoteappleevents off
+
+# Disable remote login
+systemsetup -setremotelogin off
+
+# Disable wake-on modem
+systemsetup -setwakeonmodem off
+
+# Disable wake-on LAN
+systemsetup -setwakeonnetworkaccess off
+
+# Disable Guest Login
+defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
+
+###############################################################################
 # Screen                                                                      #
 ###############################################################################
 
@@ -153,11 +110,17 @@ defaults write com.apple.screencapture type -string "png"
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
+# Save screenshots to the Desktop
+defaults write com.apple.screencapture location -string "$\{HOME\}/Desktop"
+
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 # Enable HiDPI display modes (requires restart)
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+
+# Set the display sleep time to 15 minutes
+sudo systemsetup -setdisplaysleep 15
 
 ###############################################################################
 # Finder                                                                      #
@@ -190,6 +153,12 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
+# Enable spring loading for directories
+defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+
+# Remove the spring loading delay for directories
+defaults write NSGlobalDomain com.apple.springing.delay -float 0
+
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
@@ -212,6 +181,13 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
     OpenWith -bool true \
     Privileges -bool true
 
+# Disable the “Are you sure you want to open this application?”
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Set Home as the default location for new Finder windows
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
@@ -219,8 +195,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
-# Set the icon size of Dock items to 36 pixels
-defaults write com.apple.dock tilesize -int 36
+# Set the icon size of Dock items to 57 pixels
+defaults write com.apple.dock tilesize -int 57
 
 # Change minimize/maximize window effect
 defaults write com.apple.dock mineffect -string "scale"
@@ -266,6 +242,7 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
 # Hide Safari’s bookmarks bar by default
 defaults write com.apple.Safari ShowFavoritesBar -bool false
+defaults write com.apple.Safari "ShowFavoritesBar-v2" -bool false
 
 # Hide Safari’s sidebar in Top Sites
 defaults write com.apple.Safari ShowSidebarInTopSites -bool false
@@ -290,19 +267,9 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
-###############################################################################
-# Terminal & iTerm 2                                                          #
-###############################################################################
+# Do Not Track
+defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
-# Only use UTF-8 in Terminal.app
-defaults write com.apple.terminal StringEncodings -array 4
-
-# Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
-
-# Install the Solarized Dark theme for iTerm
-start_if_needed iTerm
-open "${HOME}/init/Solarized Dark.itermcolors"
 
 ###############################################################################
 # Time Machine                                                                #
@@ -351,17 +318,20 @@ defaults write com.apple.DiskUtility advanced-image-options -bool true
 
 # Increase the key repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Disable the horrible character chooser popup, and get proper key repeat
 defaults write -g ApplePressAndHoldEnabled -bool false
 
+# Disable 'natural' (Lion-style) scrolling"
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 ###############################################################################
 # Sublime Text                                                                #
 ###############################################################################
 
 # Install Sublime Text settings
-cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
+cp -r ./sublime/* ~/Library/Application\ Support/Sublime\ Text*/Packages/User/
 
 # create cli shortcuts
 ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
@@ -404,33 +374,3 @@ for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
     "Transmission" "Twitter" "iCal"; do
     killall "${app}" > /dev/null 2>&1
 done
-
-
-###############################################################################
-# My Zsh                                                                      #
-###############################################################################
-
-brew install zsh
-chsh -s $(which zsh)
-
-# Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-# Auto-suggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# syntax highlightings
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-# completions
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
-
-# Vim
-git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
-sh ~/.vim_runtime/install_awesome_vimrc.sh
-
-# Make terminal faster
-touch ~/.hushlogin
-
-
-
