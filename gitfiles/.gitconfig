@@ -1,0 +1,7 @@
+[user]
+	name = Yann Defretin
+	email = kinoute@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+[github]
+	user = kinoute
