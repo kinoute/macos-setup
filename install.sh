@@ -25,6 +25,9 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade --all
 
+## Install cask
+brew install cask
+
 # Install GNU core utilities (those that come with OS X are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
@@ -408,7 +411,7 @@ done
 ###############################################################################
 
 brew install zsh
-chsh -s /bin/zsh
+chsh -s $(which zsh)
 
 # Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

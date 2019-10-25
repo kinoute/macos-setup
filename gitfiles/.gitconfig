@@ -5,3 +5,5 @@
 	excludesfile = ~/.gitignore
 [github]
 	user = kinoute
+[color]
+    ui = auto
