@@ -22,10 +22,10 @@
 		"vendor/*"
 	],
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/TwoStones (SL).tmTheme",
+	"color_scheme": "Packages/User/Hivacruz.tmTheme",
 	"copy_with_empty_selection": true,
 	"ensure_newline_at_eof_on_save": true,
-	"font_face": "Roboto Mono",
+	"font_face": "Roboto Mono Medium",
 	"font_size": 12,
 	"hot_exit": false,
 	"ignored_packages":
