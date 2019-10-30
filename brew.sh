@@ -35,7 +35,7 @@ brew install findutils
 brew install gnu-sed
 
 # languages
-brew install python3
+brew install python
 brew install php
 
 # Install more recent versions of some OS X tools.
@@ -60,12 +60,22 @@ brew install ffmpeg
 brew install ripgrep
 brew install bat
 brew install wget
+brew install watch
 
 # Core Casks
 brew cask install --appdir="/Applications" flux
 brew cask install --appdir="/Applications" spotify
 brew cask install --appdir="/Applications" vlc
 brew cask install --appdir="/Applications" the-unarchiver
+brew cask install --appdir="/Applications" lulu
+brew cask install --appdir="/Applications" onyx
+
+# Hackintosh stuff
+brew cask install --appdir="/Applications" karabiner-elements
+
+# Remove mouse acceleration
+brew tap homebrew/cask-drivers
+brew cask install --appdir="/Applications" steelseries-exactmouse-tool
 
 # Development tool casks
 brew cask install --appdir="/Applications" iterm2
@@ -73,6 +83,7 @@ brew cask install --appdir="/Applications" sublime-text
 brew cask install --appdir="/Applications" virtualbox
 brew cask install --appdir="/Applications" google-chrome
 brew cask install --appdir="/Applications" miniconda
+brew cask install --appdir="/Applications" visual-studio-code
 
 # Install Docker, which requires virtualbox
 brew install docker
