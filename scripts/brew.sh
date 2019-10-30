@@ -43,6 +43,7 @@ brew install git
 brew install git-lfs
 brew install git-flow
 brew install git-extras
+brew install diff-so-fancy
 brew install imagemagick --with-webp
 brew install pv
 brew install rename

@@ -37,6 +37,3 @@ sudo cp -f ./iterm/com.googlecode.iterm2.plist ~/Library/Preferences/
 
 # Install Hivacruz theme for iTerm
 open -a iTerm ./iterm/Hivacruz.itermcolors
-
-
-
