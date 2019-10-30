@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# Ask for the administrator password upfront
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until the script has finished.
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
 # Check for Homebrew,
 # Install if we don't have it
 if test ! $(which brew); then
@@ -63,27 +57,36 @@ brew install wget
 brew install watch
 
 # Core Casks
-brew cask install --appdir="/Applications" flux
-brew cask install --appdir="/Applications" spotify
-brew cask install --appdir="/Applications" vlc
-brew cask install --appdir="/Applications" the-unarchiver
-brew cask install --appdir="/Applications" lulu
-brew cask install --appdir="/Applications" onyx
+brew cask install flux
+brew cask install spotify
+brew cask install vlc
+brew cask install the-unarchiver
+brew cask install lulu
+brew cask install onyx
+brew cask install transmission
 
 # Hackintosh stuff
-brew cask install --appdir="/Applications" karabiner-elements
+brew cask install karabiner-elements
 
 # Remove mouse acceleration
 brew tap homebrew/cask-drivers
-brew cask install --appdir="/Applications" steelseries-exactmouse-tool
+brew cask install steelseries-exactmouse-tool
 
 # Development tool casks
-brew cask install --appdir="/Applications" iterm2
-brew cask install --appdir="/Applications" sublime-text
-brew cask install --appdir="/Applications" virtualbox
-brew cask install --appdir="/Applications" google-chrome
-brew cask install --appdir="/Applications" miniconda
-brew cask install --appdir="/Applications" visual-studio-code
+brew cask install iterm2
+brew cask install sublime-text
+brew cask install virtualbox
+brew cask install google-chrome
+brew cask install miniconda
+brew cask install visual-studio-code
+
+# Correct PHP code
+brew install php-cs-fixer
+brew install phpcbf
+brew install phpmd
+
+# Fix Ruby Code
+brew install rubocop
 
 # Install Docker, which requires virtualbox
 brew install docker
@@ -94,6 +97,23 @@ brew install lazydocker
 brew tap homebrew/cask-fonts
 brew cask install font-roboto-mono
 brew cask install font-roboto-mono-for-powerline
+
+# Better quick look support
+brew cask install qlcolorcode
+brew cask install qlstephen
+brew cask install qlmarkdown
+brew cask install quicklook-json
+brew cask install qlprettypatch
+brew cask install quicklook-csv
+brew cask install betterzip
+brew cask install webpquicklook
+brew cask install suspicious-package
+brew cask install suspicious-package
+brew cask install webpquicklook
+brew cask install quicklook-csv
+brew cask install betterzip
+brew cask install webpquicklook
+brew cask install suspicious-package
 
 # Remove outdated versions from the cellar.
 brew cleanup

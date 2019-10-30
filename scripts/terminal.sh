@@ -1,24 +1,5 @@
 #!/usr/bin/env bash
 
-# Ask for the administrator password upfront
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until the script has finished.
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-###############################################################################
-# Terminal & iTerm 2                                                          #
-###############################################################################
-
-# Only use UTF-8 in Terminal.app
-defaults write com.apple.terminal StringEncodings -array 4
-
-# Copy iterm Settings
-sudo cp -f ./iterm/com.googlecode.iterm2.plist ~/Library/Preferences/
-
-# Install the Solarized Dark theme for iTerm
-open "./Hack.itermcolors"
-
 ###############################################################################
 # My Zsh                                                                      #
 ###############################################################################
@@ -43,5 +24,19 @@ git clone https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/
 
 # Make terminal faster
 touch ~/.hushlogin
+
+###############################################################################
+# Terminal & iTerm 2                                                          #
+###############################################################################
+
+# Only use UTF-8 in Terminal.app
+defaults write com.apple.terminal StringEncodings -array 4
+
+# Copy iterm Settings
+sudo cp -f ./iterm/com.googlecode.iterm2.plist ~/Library/Preferences/
+
+# Install Hivacruz theme for iTerm
+open -a iTerm ./iterm/Hivacruz.itermcolors
+
 
 
