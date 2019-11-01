@@ -56,6 +56,7 @@ brew install ripgrep
 brew install bat
 brew install wget
 brew install watch
+brew install mas
 
 # Core Casks
 brew cask install flux
@@ -65,6 +66,12 @@ brew cask install the-unarchiver
 brew cask install lulu
 brew cask install onyx
 brew cask install transmission
+
+# Apps fom Mac App Store
+mas install '425424353' # The unarchiver
+mas install '1147396723' # WhatsApp
+mas install '1440147259' # Adguard For Safari
+mas install '1429386865' # Nightlight (dark mode in Safari)
 
 # Hackintosh stuff
 brew cask install karabiner-elements
@@ -77,7 +84,7 @@ brew cask install steelseries-exactmouse-tool
 brew cask install iterm2
 brew cask install sublime-text
 brew cask install virtualbox
-brew cask install google-chrome
+brew cask install brave-browser
 brew cask install miniconda
 brew cask install visual-studio-code
 
@@ -105,16 +112,17 @@ brew cask install qlstephen
 brew cask install qlmarkdown
 brew cask install quicklook-json
 brew cask install qlprettypatch
-brew cask install quicklook-csv
-brew cask install betterzip
-brew cask install webpquicklook
-brew cask install suspicious-package
 brew cask install suspicious-package
 brew cask install webpquicklook
 brew cask install quicklook-csv
 brew cask install betterzip
-brew cask install webpquicklook
-brew cask install suspicious-package
+
+# Waiting for the author to accept my PR : https://github.com/tuxu/ipynb-quicklook/pull/7
+# brew cask install jupyter-notebook-viewer
+sudo cp ./misc/ipynb-quicklook.qlgenerator /Library/QuickLook
+
+# restart quick look
+qlmanage -r
 
 # Remove outdated versions from the cellar.
 brew cleanup
