@@ -25,6 +25,24 @@ git clone https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/
 # Make terminal faster
 touch ~/.hushlogin
 
+# copy dotfiles and zshrc
+mkdir -p ~/.dotfiles
+cp -f ./dotfiles/* ~/.dotfiles
+cp -f .zshrc ~/
+
+###############################################################################
+# Vim                                                                         #
+###############################################################################
+
+# install VIM Plugins Manager
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# Copy my setup
+cp -f .vimrc ~/
+
+# Install plugins
+vim +PluginInstall +qall
+
 ###############################################################################
 # Terminal & iTerm 2                                                          #
 ###############################################################################
