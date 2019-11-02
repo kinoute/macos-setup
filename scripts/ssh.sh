@@ -14,6 +14,7 @@ eval "$(ssh-agent -s)"
 # automatically load keys into the ssh-agent and store passphrases in your keychain
 cat > ~/.ssh/config <<EOL
 Host *
+  IgnoreUnknown AddKeysToAgent,UseKeychain
   AddKeysToAgent yes
   UseKeychain yes
   IdentityFile ~/.ssh/id_rsa
