@@ -34,3 +34,13 @@ function man() {
     LESS_TERMCAP_us=$(printf "\e[1;32m") \
       man "$@"
 }
+
+# Load .env file into shell session for environment variables
+function envup() {
+  if [ -f .env ]; then
+    export $(sed '/^ *#/ d' .env)
+  else
+    echo 'No .env file found' 1>&2
+    return 1
+  fi
+}
