@@ -13,6 +13,12 @@ alias sites="cd ~/sites"
 alias python=python3
 alias pip=pip3
 alias cat="bat --style=plain --paging=never --italic-text=always"
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias top=htop
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias s='subl .'
+alias oo='open .'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -100,13 +106,10 @@ alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.p
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 # Reload the shell (i.e. invoke as a login shell)
-alias reload="exec ${SHELL} -l"
+alias refresh='source ~/.zshrc; echo "Reloaded .zshrc."'
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
 # Show and copy SSH Key to Clipboard
 alias sshkey="cat ~/.ssh/id_rsa.pub | pbcopy && echo 'SSH Key Copied to clipboard.'"
-
-
-
