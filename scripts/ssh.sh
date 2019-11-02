@@ -24,7 +24,7 @@ ssh-add -K ~/.ssh/id_rsa
 
 echo "Here is your Public SSH Key (available in your clipboard):"
 echo ""
-cat /.ssh/id_rsa.pub
+cat ~/.ssh/id_rsa.pub
 
 # Copy SSH Key to the clipboard
 pbcopy < ~/.ssh/id_rsa.pub
