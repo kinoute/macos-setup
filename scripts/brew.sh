@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+###############################################################################
+# Use HomeBrew to install every package/app needed                            #
+###############################################################################
+
 # Check for Homebrew,
 # Install if we don't have it
 if test ! $(which brew); then
@@ -58,6 +62,10 @@ brew install bat
 brew install wget
 brew install watch
 brew install mas
+brew install fzf
+brew install htop
+brew install fd
+brew instal ncdu
 
 # Core Casks
 brew cask install flux
@@ -100,6 +108,10 @@ brew install phpmd
 
 # Fix Ruby Code
 gem install rubocop
+
+# Format Python code
+conda install autopep8
+conda activate
 
 # Install Docker, which requires virtualbox
 brew install docker

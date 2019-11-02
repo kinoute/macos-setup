@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+###############################################################################
+# Configure our SSH Key if needed                                             #
+###############################################################################
+
 # Don't do anything if a SSH Key is already set up
 [ -f ~/.ssh/id_rsa.pub ] && echo "It seems you already have a SSH Key here... existing" && exit
 
