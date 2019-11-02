@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+###############################################################################
+# Customize macOS Interface/Options for Development                           #
+###############################################################################
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
@@ -218,10 +222,6 @@ defaults write com.apple.dock autohide -bool true
 # Safari & WebKit                                                             #
 ###############################################################################
 
-# Privacy: don’t send search queries to Apple
-defaults write com.apple.Safari UniversalSearchEnabled -bool false
-defaults write com.apple.Safari SuppressSearchSuggestions -bool true
-
 # Press Tab to highlight each item on a web page
 defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
@@ -264,6 +264,9 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 # Do Not Track
 defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
+
+# Add banned hosts to our /etc/hosts
+sudo curl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts > /etc/hosts
 
 ###############################################################################
 # Time Machine                                                                #
@@ -328,7 +331,8 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 ###############################################################################
 
 # Install Sublime Text settings
-cp -r ./sublime/* ~/Library/Application\ Support/Sublime\ Text*/Packages/User/
+rm -f ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/*
+cp ./sublime/* ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
 
 # create cli shortcuts
 ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
