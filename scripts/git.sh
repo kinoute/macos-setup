@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
+###############################################################################
+# Configure Git                                                               #
+###############################################################################
+
 # Copy gitignore and gitconfig template files
-sudo cp -r -f ./gitfiles/* ~/
+sudo cp ./gitfiles/.* ~/
 
 # Set-up name
 read -p "Enter your Full Name for Git: " name
