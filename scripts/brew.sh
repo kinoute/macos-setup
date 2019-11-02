@@ -31,6 +31,7 @@ brew install gnu-sed
 # languages
 brew install python
 brew install php
+brew install zsh
 
 # Install more recent versions of some OS X tools.
 brew install vim --override-system-vi
@@ -75,6 +76,7 @@ mas install '1429386865' # Nightlight (dark mode in Safari)
 
 # Hackintosh stuff
 brew cask install karabiner-elements
+brew install neofetch
 
 # Remove mouse acceleration
 brew tap homebrew/cask-drivers

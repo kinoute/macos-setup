@@ -4,7 +4,7 @@
 # My Zsh                                                                      #
 ###############################################################################
 
-brew install zsh
+# set zsh as default shell
 chsh -s $(which zsh)
 
 # Oh My Zsh
