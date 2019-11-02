@@ -11,7 +11,7 @@ fi
 brew update
 
 # Upgrade any already-installed formulae.
-brew upgrade --all
+brew upgrade
 
 ## Install cask
 brew install cask
@@ -34,10 +34,10 @@ brew install php
 brew install zsh
 
 # Install more recent versions of some OS X tools.
-brew install vim --override-system-vi
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
+brew install vim
+brew install grep
+brew install openssh
+brew install screen
 
 # Install other useful binaries.
 brew install git
@@ -45,7 +45,7 @@ brew install git-lfs
 brew install git-flow
 brew install git-extras
 brew install diff-so-fancy
-brew install imagemagick --with-webp
+brew install imagemagick
 brew install pv
 brew install rename
 brew install ssh-copy-id
@@ -67,6 +67,9 @@ brew cask install the-unarchiver
 brew cask install lulu
 brew cask install onyx
 brew cask install transmission
+brew cask install slack
+brew cask install discord
+
 
 # Apps fom Mac App Store
 mas install '425424353' # The unarchiver
@@ -96,7 +99,7 @@ brew install phpcbf
 brew install phpmd
 
 # Fix Ruby Code
-brew install rubocop
+gem install rubocop
 
 # Install Docker, which requires virtualbox
 brew install docker
@@ -120,9 +123,9 @@ brew cask install webpquicklook
 brew cask install quicklook-csv
 brew cask install betterzip
 
-# Waiting for the author to accept my PR : https://github.com/tuxu/ipynb-quicklook/pull/7
+# Waiting for the author to accept my PR: https://github.com/tuxu/ipynb-quicklook/pull/7
 # brew cask install jupyter-notebook-viewer
-sudo cp ./misc/ipynb-quicklook.qlgenerator /Library/QuickLook
+sudo cp -r ./misc/ipynb-quicklook.qlgenerator /Library/QuickLook
 
 # restart quick look
 qlmanage -r

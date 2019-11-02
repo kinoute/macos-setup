@@ -44,10 +44,7 @@ defaults write -g AppleTemperatureUnit -string "Celsius"
 sudo systemsetup -settimezone "Europe/Paris"
 
 # Set the time using the network time
-systemsetup -setusingnetworktime on
-
-# Set the computer sleep time to 15 minutes
-sudo systemsetup -setcomputersleep 15
+sudo systemsetup -setusingnetworktime on
 
 # Set the harddisk sleep time to 15 minutes
 sudo systemsetup -setharddisksleep 15
@@ -58,13 +55,13 @@ sudo systemsetup -setharddisksleep 15
 ###############################################################################
 
 # Disable local Time Machine snapshots
-sudo tmutil disablelocal
+#sudo tmutil disablelocal
 
 # Disable hibernation (speeds up entering sleep mode)
 sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
-sudo rm -f /private/var/vm/sleepimage
+sudo rm -rf /private/var/vm/sleepimage
 
 # Create a zero-byte file instead…
 sudo touch /private/var/vm/sleepimage
@@ -80,19 +77,19 @@ sudo pmset -a sms 0
 ###############################################################################
 
 # Disable remote apple events
-systemsetup -setremoteappleevents off
+sudo systemsetup -f -setremoteappleevents off
 
 # Disable remote login
-systemsetup -setremotelogin off
+sudo systemsetup -f -setremotelogin off
 
 # Disable wake-on modem
-systemsetup -setwakeonmodem off
+sudo systemsetup -f -setwakeonmodem off
 
 # Disable wake-on LAN
-systemsetup -setwakeonnetworkaccess off
+sudo systemsetup -f -setwakeonnetworkaccess off
 
 # Disable Guest Login
-defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
+sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
 
 ###############################################################################
 # Screen                                                                      #
@@ -276,7 +273,7 @@ defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
+hash tmutil &> /dev/null
 
 ###############################################################################
 # Activity Monitor                                                            #
@@ -294,6 +291,9 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 # Sort Activity Monitor results by CPU usage
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+# Show Data in the Network graph (instead of packets)
+defaults write com.apple.ActivityMonitor NetworkGraphType -int 1
 
 ###############################################################################
 # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
