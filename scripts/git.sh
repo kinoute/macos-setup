@@ -5,7 +5,7 @@
 ###############################################################################
 
 # Copy gitignore and gitconfig template files
-sudo cp ./gitfiles/.* ~/
+sudo cp -r -f ./gitfiles/.* ~/
 
 # Diff colors
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
