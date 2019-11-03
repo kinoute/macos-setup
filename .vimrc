@@ -8,26 +8,26 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-Plug 'luochen1990/rainbow'
-Plug 'itchyny/lightline.vim'
+Plugin 'luochen1990/rainbow'
+Plugin 'itchyny/lightline.vim'
 
 " Productivity
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'zxqfl/tabnine-vim'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'mtth/scratch.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'zxqfl/tabnine-vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plugin 'mtth/scratch.vim'
 
-Plug 'w0rp/ale', { 'for': 'rust' }
+Plugin 'w0rp/ale', { 'for': 'rust' }
 
 " Languages and syntax
-Plug 'vim-ruby/vim-ruby'
-Plug 'fatih/vim-go'
-Plug 'elzr/vim-json', { 'for': 'json' }
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'tpope/vim-markdown'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'fatih/vim-go'
+Plugin 'elzr/vim-json', { 'for': 'json' }
+Plugin 'rust-lang/rust.vim', { 'for': 'rust' }
+Plugin 'tpope/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
