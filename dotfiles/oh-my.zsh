@@ -71,7 +71,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-plugins=(git pip python osx zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git pip python osx zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
 
 # Theme option
 POWERLEVEL9K_DISABLE_RPROMPT=true
