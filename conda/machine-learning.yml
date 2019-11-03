@@ -16,3 +16,6 @@ dependencies:
     - spacy
     - nltk
     - ipywidgets
+    - pandas-profiling
+    - pip:
+        - auto-sklearn

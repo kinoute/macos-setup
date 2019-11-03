@@ -13,3 +13,4 @@ dependencies:
   - matplotlib
   - seaborn
   - ipywidgets
+  - pandas-profiling

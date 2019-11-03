@@ -17,6 +17,7 @@ dependencies:
   - theano
   - pygpu
   - ipywidgets
+  - pandas-profiling
   - pip:
     - tqdm
     - packaging
@@ -24,3 +25,4 @@ dependencies:
     - holoviews
     - sklearn
     - pillow
+    - nni

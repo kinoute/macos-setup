@@ -12,6 +12,7 @@ dependencies:
   - seaborn
   - ipywidgets
   - keras
+  - pandas-profiling
   - pip:
     - tqdm
     - packaging
@@ -20,3 +21,6 @@ dependencies:
     - holoviews
     - sklearn
     - pillow
+    - autokeras
+    - horovod
+    - nni
