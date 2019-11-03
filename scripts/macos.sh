@@ -266,7 +266,7 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
 # Add banned hosts to our /etc/hosts
-sudo curl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts > /etc/hosts
+sudo -- sh -c "curl -s https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts > /etc/hosts"
 
 ###############################################################################
 # Time Machine                                                                #
@@ -330,8 +330,16 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 # Sublime Text                                                                #
 ###############################################################################
 
+
+# Open and close Sublime Text quickly to generate folders
+open -a "Sublime Text"
+osascript -e 'tell app "Sublime Text" to quit'
+
+# Download Package Control manually
+wget -q https://packagecontrol.io/Package%20Control.sublime-package -P ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages
+
 # Install Sublime Text settings
-rm -f ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/*
+rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/*
 cp ./sublime/* ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
 
 # create cli shortcuts
@@ -353,7 +361,7 @@ defaults write org.m0k.transmission WarningLegal -bool false
 # Download to downloads folder
 defaults write org.m0k.transmission DownloadLocationConstant -bool true
 defaults write org.m0k.transmission DownloadChoice -string 'Constant'
-defaults write org.m0k.transmission DownloadFolder -string '$HOME/Downloads'
+defaults write org.m0k.transmission DownloadFolder -string '~/Downloads'
 
 # Ip Block List
 defaults write org.m0k.transmission BlocklistNew -bool true
