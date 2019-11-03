@@ -1,5 +1,5 @@
 {
-	"always_show_minimap_viewport": true,
+	"always_show_minimap_viewport": false,
 	"auto_complete": false,
 	"auto_complete_commit_on_tab": true,
 	"binary_file_patterns":
