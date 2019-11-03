@@ -35,6 +35,7 @@ filetype plugin indent on    " required
 
 syntax enable
 set path+=**
+set backspace=indent,eol,start
 set wildmenu
 set number
 set encoding=utf-8
