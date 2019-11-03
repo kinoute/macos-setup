@@ -7,4 +7,6 @@ for file in ~/.dotfiles/*.zsh; do
     source "$file"
 done
 
-unset file
+# Lazy load stuff
+group_lazy_load $HOME/.rvm/scripts/rvm rvm irb rake rails
+unset -f group_lazy_load

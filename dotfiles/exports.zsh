@@ -10,3 +10,5 @@ export ZSH=~/.oh-my-zsh
 # Term Colors
 export TERM=xterm-256color
 
+# Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
