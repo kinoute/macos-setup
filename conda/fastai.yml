@@ -4,20 +4,12 @@ channels:
   - fastai
   - pytorch
 dependencies:
-  - beautifulsoup4
-  - bottleneck
-  - dataclasses
-  - fastprogress >=0.1.19
-  - matplotlib
-  - numexpr
-  - numpy >=1.15
-  - nvidia-ml-py3
-  - packaging
+  - python=3.6
+  - fastai
+  - numpy
+  - holoviews
+  - jupyter
   - pandas
-  - pillow
-  - pytorch >=1.0.0
-  - pyyaml
-  - requests
-  - scipy
-  - spacy >=2.0.18
-  - torchvision
+  - matplotlib
+  - seaborn
+  - ipywidgets
