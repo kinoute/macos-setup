@@ -32,6 +32,8 @@ channels:
   - bokeh
   - conda-canary
   - conda-forge
+  - fastai
+  - pytorch
 
 # channel_alias (str)
 #   The prepended url location to associate with channel names.

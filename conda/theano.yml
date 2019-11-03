@@ -1,0 +1,26 @@
+name: theano
+channels:
+  - conda-forge
+  - ioam
+dependencies:
+  - python=3.6
+  - numpy
+  - mkl
+  - nose
+  - sphinx
+  - pydot-ng
+  - holoviews
+  - jupyter
+  - pandas
+  - matplotlib
+  - seaborn
+  - theano
+  - pygpu
+  - ipywidgets
+  - pip:
+    - tqdm
+    - packaging
+    - appdirs
+    - holoviews
+    - sklearn
+    - pillow

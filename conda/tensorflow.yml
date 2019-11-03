@@ -1,0 +1,22 @@
+name: tensorflow
+channels:
+  - conda-forge
+  - ioam
+dependencies:
+  - python=3.6
+  - numpy
+  - holoviews
+  - jupyter
+  - pandas
+  - matplotlib
+  - seaborn
+  - ipywidgets
+  - keras
+  - pip:
+    - tqdm
+    - packaging
+    - appdirs
+    - tensorflow-gpu
+    - holoviews
+    - sklearn
+    - pillow
