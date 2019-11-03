@@ -113,8 +113,7 @@ brew install phpmd
 gem install rubocop
 
 # Format Python code
-conda install autopep8
-conda activate
+brew install autopep8
 
 # Install Docker, which requires virtualbox
 brew install docker
