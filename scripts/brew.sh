@@ -87,7 +87,9 @@ mas install '1440147259' # Adguard For Safari
 mas install '1429386865' # Nightlight (dark mode in Safari)
 
 # Hackintosh stuff
-brew cask install karabiner-elements
+# the newest version of karabiner seems buggy, use 12.3.0 instead
+# brew cask install karabiner-elements
+brew cask install https://raw.githubusercontent.com/Homebrew/homebrew-cask/4df3cd10135add216efff6a6feac9793d3c7910f/Casks/karabiner-elements.rb
 brew install neofetch
 
 # Remove mouse acceleration
