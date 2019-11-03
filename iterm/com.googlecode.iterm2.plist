@@ -636,7 +636,7 @@
 	<key>NSFontPanelAttributes</key>
 	<string>1, 5</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Sites/mac-dev-install/iterm</string>
+	<string>~/Sites/macos-setup/iterm</string>
 	<key>NSNavLastUserSetHideExtensionButtonState</key>
 	<false/>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -693,7 +693,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>334 201 918 512 0 0 1366 745 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>764 119 577 395 0 0 1366 745 </string>
+	<string>165 343 1200 402 0 0 1366 745 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>1020 169 332 237 0 0 1366 745 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -1453,13 +1453,13 @@
 	<key>NoSyncAllAppVersions</key>
 	<array>
 		<string>3.3.6</string>
-		<string>3.3.4</string>
+		<string>3.2.9</string>
 		<string>3.3.1</string>
 		<string>3.3.3</string>
 		<string>3.3.5</string>
 		<string>3.3.0</string>
 		<string>3.3.2</string>
-		<string>3.2.9</string>
+		<string>3.3.4</string>
 	</array>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
@@ -1473,7 +1473,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>81A90A55-0B56-4C88-8B7F-3B91929DCEF3</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>74</integer>
+	<integer>75</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2261,7 +2261,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/kinoute/Sites/mac-dev-install/iterm</string>
+	<string>/Users/kinoute/Sites/macos-setup/iterm</string>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>SUEnableAutomaticChecks</key>
@@ -2273,7 +2273,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-10-24T11:17:18Z</date>
+	<date>2019-11-03T19:12:09Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
