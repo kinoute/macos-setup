@@ -44,6 +44,7 @@ brew install openssh
 brew install screen
 
 # Install other useful binaries.
+brew install bfg
 brew install git
 brew install git-lfs
 brew install git-flow
