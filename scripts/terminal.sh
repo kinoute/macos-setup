@@ -27,7 +27,7 @@ touch ~/.hushlogin
 
 # copy dotfiles and zshrc
 mkdir -p ~/.dotfiles
-cp -f ./dotfiles/* ~/.dotfiles
+cp ./dotfiles/* ~/.dotfiles
 cp -f .zshrc ~/
 
 ###############################################################################

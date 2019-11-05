@@ -25,7 +25,7 @@ Host *
 EOL
 
 # Add your SSH private key to the ssh-agent and store your passphrase in the keychain
-ssh-add -K ~/.ssh/id_rsa
+/usr/bin/ssh-add -K ~/.ssh/id_rsa
 
 echo "Here is your Public SSH Key (available in your clipboard):"
 echo ""

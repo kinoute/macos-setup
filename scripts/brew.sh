@@ -116,7 +116,7 @@ gem install rubocop
 brew install autopep8
 
 # Install Docker, which requires virtualbox
-brew install docker
+brew cask install docker
 brew install docker-compose
 brew install lazydocker
 

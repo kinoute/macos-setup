@@ -5,4 +5,4 @@
 ###############################################################################
 
 # copy our environments files
-cp -r -f ./conda/* ~/.conda/
+cp ./conda/* ~/.conda/
