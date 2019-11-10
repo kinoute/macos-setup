@@ -1038,6 +1038,31 @@
 				<string>#ff8e30</string>
 			</dict>
 		</dict>
+        <dict>
+            <key>name</key>
+            <string>Block code</string>
+            <key>scope</key>
+            <string>markup.raw.block.markdown</string>
+            <key>settings</key>
+            <dict>
+                <key>background</key>
+                <string>#2e3240</string>
+                <key>foreground</key>
+                <string>#aaaaaa</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Inline code</string>
+            <key>scope</key>
+            <string>markup.raw.inline.markdown</string>
+            <key>settings</key>
+            <dict>
+                <key>background</key>
+                <string>#2e3240</string>
+            </dict>
+        </dict>
+
 		<dict>
 			<key>name</key>
 			<string>Library function</string>
