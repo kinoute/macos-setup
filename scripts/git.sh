@@ -4,8 +4,21 @@
 # Configure Git                                                               #
 ###############################################################################
 
-# Copy gitignore and gitconfig template files
-sudo cp -r -f ./gitfiles/.* ~/
+# no gitconfig yet, copy template and ask infos
+if [ ! -f  ~/.gitconfig ]; then
+
+    # Copy gitignore and gitconfig template files
+    sudo cp -r -f ./gitfiles/.* ~/
+
+    # Set-up name
+    read -p "Enter your Full Name for Git: " name
+    git config --global user.name "$name"
+
+    # Set-up email
+    read -p "Enter your Email for Git: " email
+    git config --global user.email "$email"
+
+fi
 
 # Diff colors
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
