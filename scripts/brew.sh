@@ -67,6 +67,7 @@ brew install fzf
 brew install htop
 brew install fd
 brew instal ncdu
+brew install ipython
 
 # Core Casks
 brew cask install flux
