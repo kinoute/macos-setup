@@ -80,7 +80,7 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 alias c="tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files and python cache folders
-alias cleanup="find -E . -regex '.*(\.DS_Store|__pycache__)' -ls -delete"
+alias cleanup="find -E . -regex '.*(\.DS_Store|__pycache__).*' -ls -delete"
 
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.
