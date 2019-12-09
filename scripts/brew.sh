@@ -78,12 +78,9 @@ brew cask install lulu
 brew cask install onyx
 brew cask install transmission
 brew cask install slack
-brew cask install discord
 
 
 # Apps fom Mac App Store
-mas install '425424353' # The unarchiver
-mas install '1147396723' # WhatsApp
 mas install '1440147259' # Adguard For Safari
 mas install '1429386865' # Nightlight (dark mode in Safari)
 
