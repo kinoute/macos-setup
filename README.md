@@ -37,7 +37,7 @@ Here are all the sub-scripts that are called when running the full installation:
 
 ### brew.sh
 
-This script first checks if you have [homebrew](https://brew.sh) installed on your machine. If not, it downloads and installs it. Then it installs a lot of binaries through homebrew.
+This [script](scripts/brew.sh) first checks if you have [homebrew](https://brew.sh) installed on your machine. If not, it downloads and installs it. Then it installs a lot of binaries through homebrew.
 
 To only run this script, do:
 
