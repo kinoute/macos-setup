@@ -62,3 +62,10 @@ The comments inside the file speak for themselves but to sum up, this script ins
 * Tools to fix codes automatically (php-cs-fixer, rubocop, autopep8..) ;
 * _Optional:_ Hackintoshes stuff if needed (Karabiner Elements to modify keys).
 
+### conda.sh
+
+This [script](scripts/conda.sh) only copies some useful Deep Learning environments to `~/.conda`. You can create an environment based one of these files with `conda create`.
+
+### git.sh
+
+This [script](scripts/git.sh) checks if you have already set up a `.gitconfig`file. If not, it copies a `.gitignore` file containing famous and useful files/folders to ignore on your projects. it also copies a `.gitconfig` file.
