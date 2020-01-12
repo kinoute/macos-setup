@@ -78,9 +78,9 @@ This [script](scripts/ssh.sh) first checks if you already have a SSH key generat
 
 ### terminal.sh
 
-This [script](scripts/terminal.sh) sets Zsh as your default shell (after installing it through the script `brew.sh`). It will install the Oh-My-Zsh framework as well and useful plugins like syntax highlighting, auto-suggestions, and nice terminal font.
+This [script](scripts/terminal.sh) sets Zsh as your default shell if you installed it through the script `brew.sh`). It will install the Oh-My-Zsh framework as well and useful plugins like syntax highlighting, auto-suggestions, and nice terminal font.
 
-It will also install useful VIM plugins, load some nice iTerm2 preferences and copy a few configuration files for `screen`, `wget` or `conda`.
+Also, It will install useful VIM plugins, load some nice iTerm2 preferences and copy a few configuration files for `screen`, `wget` or `conda`.
 
 ## Credits
 
