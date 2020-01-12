@@ -22,7 +22,7 @@ chmod +x install.sh
 
 When started, you will be asked for your password just once in order to install/edit several things on macOS.
 
-This script basically calls a few sub-scripts that do their own business listed below.
+This script basically calls a few [sub-scripts](scripts) that do their own business listed below.
 
 ## Manual Installation
 
@@ -66,7 +66,7 @@ This [script](scripts/conda.sh) only copies some useful Deep Learning environmen
 
 ### git.sh
 
-This [script](scripts/git.sh) checks if you have already set up a `.gitconfig`file. If not, it asks for your git username and emaild and copies a `.gitignore` file containing famous and useful files/folders to ignore on your projects.
+This [script](scripts/git.sh) checks if you have already set up a `.gitconfig`file. If not, it asks for your git username and email and copies a `.gitignore` file containing famous and useful files/folders to ignore on your projects.
 
 ### macos.sh
 

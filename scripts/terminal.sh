@@ -4,31 +4,41 @@
 # My Zsh                                                                      #
 ###############################################################################
 
-# set zsh as default shell
-chsh -s $(which zsh)
+# Install Zsh related stuff only if zsh is isntalled already
+if [[ $(grep /zsh$ /etc/shells | tail -1) ]]; then
 
-# Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    # set up zsh as default shell
+    chsh -s $(which zsh)
 
-# Auto-suggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    # Oh My Zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# syntax highlightings
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    # Auto-suggestions
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-# completions
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+    # syntax highlightings
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-# Install PowerLevel10k theme
-git clone https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+    # completions
+    git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 
-# Make terminal faster
-touch ~/.hushlogin
+    # Install PowerLevel10k theme
+    git clone https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
 
-# copy dotfiles and zshrc
-mkdir -p ~/.dotfiles
-cp ./dotfiles/* ~/.dotfiles
-cp -f .zshrc ~/
+    # Make terminal faster
+    touch ~/.hushlogin
+
+    # copy dotfiles and zshrc
+    mkdir -p ~/.dotfiles
+    cp ./dotfiles/* ~/.dotfiles
+    cp -f .zshrc ~/
+
+else
+
+    echo 'Not installing Zsh-related stuff because ZSH is not installed. run "brew install zsh".'
+    exit
+fi
+
 
 ###############################################################################
 # Vim                                                                         #
