@@ -2,8 +2,6 @@
 
 Sometimes, I have to reinstall everything I need on brand new Macs or Hackintoshes. After getting tired of doing it – especially tweaking macOS manually, I decided to regroup everything here.
 
-**IT'S A WORK IN PROGRESS!**
-
 **Don't run everything blindlessly.** I reunited these scripts for my own use, a lot of commands or packages may not suit you. Please fork the project or review the files to comment things you don't want.
 
 ## Full Installation
@@ -68,4 +66,27 @@ This [script](scripts/conda.sh) only copies some useful Deep Learning environmen
 
 ### git.sh
 
-This [script](scripts/git.sh) checks if you have already set up a `.gitconfig`file. If not, it copies a `.gitignore` file containing famous and useful files/folders to ignore on your projects. it also copies a `.gitconfig` file.
+This [script](scripts/git.sh) checks if you have already set up a `.gitconfig`file. If not, it asks for your git username and emaild and copies a `.gitignore` file containing famous and useful files/folders to ignore on your projects.
+
+### macos.sh
+
+This [script](scripts/macos.sh) changes a lot of macOS settings for better performance and productivity. You can review all the modifications within the file by reading the comments of each line.
+
+### ssh.sh
+
+This [script](scripts/ssh.sh) first checks if you already have a SSH key generated. If not, it will generate one for you asking for some additional informations like your email or a passphrase. It will automatically add the new SSH Key to your macOS Keychain and available to use immmediately on your system (and on your clipboard).
+
+### terminal.sh
+
+This [script](scripts/terminal.sh) sets Zsh as your default shell (after installing it through the script `brew.sh`). It will install the Oh-My-Zsh framework as well and useful plugins like syntax highlighting, auto-suggestions, and nice terminal font.
+
+It will also install useful VIM plugins, load some nice iTerm2 preferences and copy a few configuration files for `screen`, `wget` or `conda`.
+
+## Credits
+
+Made by Yann Defretin. Heavily inspired by:
+* https://github.com/holman/dotfiles
+* https://github.com/mathiasbynens/dotfiles
+* https://github.com/LukeSmithxyz/voidrice
+* https://github.com/thoughtbot/dotfiles
+
