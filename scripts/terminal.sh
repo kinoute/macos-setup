@@ -4,7 +4,7 @@
 # My Zsh                                                                      #
 ###############################################################################
 
-# Install Zsh related stuff only if zsh is isntalled already
+# Install Zsh related stuff only if zsh is installed already
 if [[ $(grep /zsh$ /etc/shells | tail -1) ]]; then
 
     # set up zsh as default shell
