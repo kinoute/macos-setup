@@ -111,7 +111,7 @@ brew install phpmd
 gem install rubocop
 
 # Format Python code
-brew install autopep8
+brew install black
 
 # Install Docker, which requires virtualbox
 brew cask install docker
