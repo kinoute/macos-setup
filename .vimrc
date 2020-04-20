@@ -27,7 +27,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'fatih/vim-go'
 Plugin 'elzr/vim-json', { 'for': 'json' }
 Plugin 'rust-lang/rust.vim', { 'for': 'rust' }
-Plugin 'tpope/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -50,10 +50,12 @@ let g:rainbow_active = 1
 set completeopt-=preview
 set laststatus=2
 set noshowmode
+set nofoldenable
+
 map <C-n> :NERDTreeToggle<CR>
 
 inoremap " ""<left>
-inoremap ' ''<left>
+" inoremap ' ''<left> auto adding single quote can be annoying
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>

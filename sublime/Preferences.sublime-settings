@@ -19,7 +19,8 @@
 		"*.zip",
 		"cache/*",
 		"_reports/*",
-		"vendor/*"
+		"vendor/*",
+		"node_modules/*"
 	],
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/User/Hivacruz.tmTheme",

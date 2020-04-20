@@ -3,7 +3,6 @@
 	"draw_centered": true,
 	"extensions":
 	[
-		"md"
 	],
-    "mde.keymap_disable.make_page_reference": true
+	"mde.keymap_disable.make_page_reference": true
 }
