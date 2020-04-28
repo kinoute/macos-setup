@@ -29,6 +29,10 @@ Plugin 'elzr/vim-json', { 'for': 'json' }
 Plugin 'rust-lang/rust.vim', { 'for': 'rust' }
 Plugin 'plasticboy/vim-markdown'
 
+Plugin 'airblade/vim-gitgutter'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'preservim/nerdtree'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -51,6 +55,7 @@ set completeopt-=preview
 set laststatus=2
 set noshowmode
 set nofoldenable
+set updatetime=100
 
 map <C-n> :NERDTreeToggle<CR>
 

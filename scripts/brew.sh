@@ -49,7 +49,7 @@ brew install git
 brew install git-lfs
 brew install git-flow
 brew install git-extras
-brew install diff-so-fancy
+brew install git-delta
 brew install imagemagick
 brew install pv
 brew install rename
