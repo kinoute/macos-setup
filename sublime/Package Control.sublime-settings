@@ -11,6 +11,7 @@
 		"AutoPEP8",
 		"BracketHighlighter",
 		"Color Highlighter",
+		"ChannelRepositoryTools",
 		"DocBlockr",
 		"DocBlockr_Python",
 		"Dockerfile Syntax Highlighting",
@@ -23,6 +24,7 @@
 		"Package Control",
 		"PackageResourceViewer",
 		"Phpcs",
+		"phpfmt",
 		"RuboCop",
 		"Rubocop Formatter",
 		"SideBarEnhancements",
@@ -37,11 +39,10 @@
 		"Sync Settings",
 		"TabNine",
 		"VCS Gutter",
-		"VimL",
-		"Vue Syntax Highlight"
+		"VimL"
 	],
-	"repositories":
-	[
-		"https://sublime.fnando.com/repositories.json"
-	]
+    "repositories":
+    [
+        "https://sublime.fnando.com/repositories.json"
+    ]
 }
