@@ -137,9 +137,8 @@ brew cask install webpquicklook
 brew cask install quicklook-csv
 brew cask install betterzip
 
-# Waiting for the author to accept my PR: https://github.com/tuxu/ipynb-quicklook/pull/7
-# brew cask install jupyter-notebook-viewer
-sudo cp -r ./misc/ipynb-quicklook.qlgenerator /Library/QuickLook
+# sse jupyter notebooks from quicklook
+brew cask install jupyter-notebook-viewer
 
 # restart quick look
 qlmanage -r
