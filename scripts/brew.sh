@@ -105,6 +105,7 @@ brew cask install visual-studio-code
 
 # Correct PHP code
 brew install php-cs-fixer
+brew install php-code-sniffer
 brew install phpcbf
 brew install phpmd
 
