@@ -1,6 +1,7 @@
 [user]
 	name = Yann Defretin
-	email = kinoute@gmail.com
+	email = yann@defret.in
+    signingkey = <GPG_SIGNING_KEY>
 [core]
     excludesfile = ~/.gitignore
     pager = delta --plus-color="#012800" --minus-color="#340001"
@@ -27,3 +28,7 @@
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
+[gpg]
+    program = gpg
+[commit]
+    gpgsign = true
