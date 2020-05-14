@@ -69,6 +69,7 @@ brew install fd
 brew instal ncdu
 brew install ipython
 brew install ngrok
+brew install gpg
 
 # Core Casks
 brew cask install flux
