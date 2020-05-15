@@ -19,3 +19,6 @@ if [ ! -f  ~/.gitconfig ]; then
     git config --global user.email "$email"
 
 fi
+
+# add gpg-agent config
+cp ./gpg-agent.conf ~/.gnupg/gpg-agent.conf

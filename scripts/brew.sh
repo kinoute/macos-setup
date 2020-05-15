@@ -70,6 +70,7 @@ brew instal ncdu
 brew install ipython
 brew install ngrok
 brew install gpg
+brew install pinentry-mac
 
 # Core Casks
 brew cask install flux

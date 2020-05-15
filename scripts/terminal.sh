@@ -37,6 +37,7 @@ else
 
     echo 'Not installing Zsh-related stuff because ZSH is not installed. run "brew install zsh".'
     exit
+
 fi
 
 
