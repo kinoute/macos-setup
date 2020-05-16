@@ -40,8 +40,8 @@ This [script](scripts/brew.sh) first checks if you have [homebrew](https://brew.
 To only run this script, do:
 
 ```sh
-cd macos-setup/scripts
-bash brew.sh 
+# important to run the script from the project's directory
+bash scripts/brew.sh 
 # you might need to do chmod +x brew.sh before to run this script
 ```
 
