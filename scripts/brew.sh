@@ -35,6 +35,7 @@ brew install gnu-sed
 # languages
 brew install python
 brew install php
+brew install go
 brew install zsh
 
 # Install more recent versions of some OS X tools.
@@ -82,7 +83,6 @@ brew cask install onyx
 brew cask install transmission
 brew cask install slack
 
-
 # Apps fom Mac App Store
 mas install '1440147259' # Adguard For Safari
 mas install '1429386865' # Nightlight (dark mode in Safari)
@@ -113,6 +113,10 @@ brew install phpmd
 
 # Fix Ruby Code
 gem install rubocop
+
+# Fix Shell scripts
+brew install shellcheck
+brew install shfmt
 
 # Format Python code
 brew install black
