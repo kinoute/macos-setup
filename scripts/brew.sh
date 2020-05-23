@@ -69,7 +69,6 @@ brew install htop
 brew install fd
 brew instal ncdu
 brew install ipython
-brew install ngrok
 brew install gpg
 brew install pinentry-mac
 
@@ -82,6 +81,7 @@ brew cask install lulu
 brew cask install onyx
 brew cask install transmission
 brew cask install slack
+brew cask install ngrok
 
 # Apps fom Mac App Store
 mas install '1440147259' # Adguard For Safari
