@@ -173,9 +173,9 @@ chflags nohidden ~/Library
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-    General -bool true \
-    OpenWith -bool true \
-    Privileges -bool true
+  General -bool true \
+  OpenWith -bool true \
+  Privileges -bool true
 
 # Disable the “Are you sure you want to open this application?”
 defaults write com.apple.LaunchServices LSQuarantine -bool false
@@ -327,7 +327,6 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 # Sublime Text                                                                #
 ###############################################################################
 
-
 # Open and close Sublime Text quickly to generate folders
 open -a "Sublime Text"
 osascript -e 'tell app "Sublime Text" to quit'
@@ -337,7 +336,7 @@ wget -q https://packagecontrol.io/Package%20Control.sublime-package -P ~/Library
 
 # Install Sublime Text settings
 rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/*
-cp ./sublime/* ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
+cp -r ./sublime/* ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
 
 # create cli shortcuts
 ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
@@ -373,8 +372,8 @@ defaults write org.m0k.transmission RandomPort -bool true
 ###############################################################################
 
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-    "Dock" "Finder" "Google Chrome" "Google Chrome Canary" "Mail" "Messages" \
-    "Opera" "Safari" "SizeUp" "Spectacle" "SystemUIServer" \
-    "Transmission" "Twitter" "iCal"; do
-    killall "${app}" > /dev/null 2>&1
+  "Dock" "Finder" "Google Chrome" "Google Chrome Canary" "Mail" "Messages" \
+  "Opera" "Safari" "SizeUp" "Spectacle" "SystemUIServer" \
+  "Transmission" "Twitter" "iCal"; do
+  killall "${app}" > /dev/null 2>&1
 done
