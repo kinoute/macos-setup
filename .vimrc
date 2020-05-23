@@ -17,7 +17,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'zxqfl/tabnine-vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plugin 'mtth/scratch.vim'
 
 Plugin 'w0rp/ale', { 'for': 'rust' }
