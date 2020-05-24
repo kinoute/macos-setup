@@ -7,39 +7,37 @@
 # Install Zsh related stuff only if zsh is installed already
 if [[ $(grep /zsh$ /etc/shells | tail -1) ]]; then
 
-    # set up zsh as default shell
-    chsh -s $(which zsh)
+  # set up zsh as default shell
+  chsh -s $(which zsh)
 
-    # Oh My Zsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  # Oh My Zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-    # Auto-suggestions
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  # Auto-suggestions
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-    # syntax highlightings
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  # syntax highlightings
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-    # completions
-    git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+  # completions
+  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 
-    # Install PowerLevel10k theme
-    git clone https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+  # Install PowerLevel10k theme
+  git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/powerlevel10k
 
-    # Make terminal faster
-    touch ~/.hushlogin
+  # Make terminal faster
+  touch ~/.hushlogin
 
-    # copy dotfiles and zshrc
-    mkdir -p ~/.dotfiles
-    cp ./dotfiles/* ~/.dotfiles
-    cp -f .zshrc ~/
+  # copy dotfiles and zshrc
+  cp ./dotfiles/* ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}
+  cp -f .zshrc ~/
 
 else
 
-    echo 'Not installing Zsh-related stuff because ZSH is not installed. run "brew install zsh".'
-    exit
+  echo 'Not installing Zsh-related stuff because ZSH is not installed. run "brew install zsh".'
+  exit
 
 fi
-
 
 ###############################################################################
 # Vim                                                                         #
@@ -72,5 +70,3 @@ cp -f .condarc ~/
 cp -f .gemrc ~/
 cp -f .screenrc ~/
 cp -f .wgetrc ~/
-
-

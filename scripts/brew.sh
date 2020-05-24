@@ -61,6 +61,7 @@ brew install jq
 brew install ffmpeg
 brew install ripgrep
 brew install bat
+brew install exa
 brew install wget
 brew install watch
 brew install mas

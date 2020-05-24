@@ -16,7 +16,7 @@ ssh-keygen -t rsa -b 4096 -C "$email"
 eval "$(ssh-agent -s)"
 
 # automatically load keys into the ssh-agent and store passphrases in your keychain
-cat > ~/.ssh/config <<EOL
+cat > ~/.ssh/config << EOL
 Host *
   IgnoreUnknown AddKeysToAgent,UseKeychain
   AddKeysToAgent yes
