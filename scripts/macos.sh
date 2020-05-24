@@ -336,7 +336,7 @@ wget -q https://packagecontrol.io/Package%20Control.sublime-package -P ~/Library
 
 # Install Sublime Text settings
 rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/*
-cp ./sublime/* ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
+cp -r ./sublime/* ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
 
 # create cli shortcuts
 ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
