@@ -129,8 +129,7 @@ brew install lazydocker
 
 # Fonts
 brew tap homebrew/cask-fonts
-brew cask install font-roboto-mono
-brew cask install font-roboto-mono-for-powerline
+brew cask install font-robotomono-nerd-font
 
 # Better quick look support
 brew cask install qlcolorcode

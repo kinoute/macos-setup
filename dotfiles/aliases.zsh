@@ -18,6 +18,7 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias s='subl .'
 alias o='open .'
+alias h='history'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
