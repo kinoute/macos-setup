@@ -69,6 +69,7 @@ brew install mas
 brew install fzf
 brew install htop
 brew install fd
+brew install autojump
 brew instal ncdu
 brew install ipython
 brew install gpg
