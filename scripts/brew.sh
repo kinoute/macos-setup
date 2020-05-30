@@ -51,6 +51,7 @@ brew install git-lfs
 brew install git-flow
 brew install git-extras
 brew install git-delta
+brew install lazygit
 brew install imagemagick
 brew install pv
 brew install rename
