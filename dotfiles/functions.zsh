@@ -67,6 +67,11 @@ function extract () {
    fi
 }
 
+function ssht() {
+    ssh -t "$@" "which tmux 2>&1 > /dev/null && tmux -u -CC new -A -s remote"
+    }
+
+
 function lazy_load() {
     # Act as a stub to another shell function/command. When first run, it will load the actual function/command then execute it.
     # E.g. This made my zsh load 0.8 seconds faster by loading `nvm` when "nvm", "npm" or "node" is used for the first time
