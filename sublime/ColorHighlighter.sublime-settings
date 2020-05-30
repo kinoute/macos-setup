@@ -70,5 +70,6 @@
 			},
 			"enabled": true
 		}
-	}
+	},
+	"file_extensions": [".css", ".less", ".scss", ".sass", ".styl",".tmTheme", ".rb", ".erb"]
 }
