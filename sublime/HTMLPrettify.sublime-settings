@@ -1,0 +1,20 @@
+{
+    "global_file_rules":
+    {
+        "html":
+        {
+            "allowed_file_extensions": ["htm", "html", "xhtml", "shtml", "xml", "svg"],
+            "disallowed_file_patterns": ["\\.html.erb"]
+        },
+        "css": {
+            "disallowed_file_patterns": ["\\.min.css"],
+            "allowed_file_extensions": ["css", "scss"],
+            "max_preserve_newlines": 2
+        },
+        "js": {
+            "disallowed_file_patterns": ["\\.min.js"],
+            "allowed_file_extensions": ["js"],
+             "max_preserve_newlines": 2,
+        }
+    }
+}

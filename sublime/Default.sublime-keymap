@@ -1,0 +1,3 @@
+[
+    { "keys": ["enter"], "command": "tab_nine_leader_key", "context": [ { "key": "tab_nine_leader_key_available", "operator": "equal", "operand": true }] },
+]

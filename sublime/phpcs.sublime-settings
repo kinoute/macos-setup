@@ -15,5 +15,5 @@
     "phpcbf_additional_args": {
         "--standard": "PSR12",
         "-n": ""
-    }
+    },
 }

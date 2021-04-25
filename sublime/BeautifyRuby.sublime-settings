@@ -1,0 +1,7 @@
+{
+"ruby": "/usr/local/opt/ruby@2.6/bin/ruby", //if you use system ruby
+"run_on_save": true, // change this from false
+//add both of these lines
+"translate_tabs_to_spaces": true,
+"tab_size": 2
+}
