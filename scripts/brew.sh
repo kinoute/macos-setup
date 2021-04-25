@@ -37,12 +37,14 @@ brew install python
 brew install php
 brew install go
 brew install zsh
+brew install node
 
 # Install more recent versions of some OS X tools.
 brew install vim
 brew install grep
 brew install openssh
 brew install screen
+brew reinstall curl
 
 # Install other useful binaries.
 brew install bfg
@@ -73,6 +75,7 @@ brew install autojump
 brew instal ncdu
 brew install ipython
 brew install gpg
+brew install pinentry
 brew install pinentry-mac
 
 # Core Casks

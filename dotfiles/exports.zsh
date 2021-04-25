@@ -20,3 +20,6 @@ export PATH="/usr/local/opt/binutils/bin:$PATH"
 
 # Sphinx
 export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+
+# curl auto complete
+export FPATH="/usr/local/opt/curl/share/zsh/site-functions:$FPATH"
