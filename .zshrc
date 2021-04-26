@@ -105,6 +105,8 @@ prompt_context() {}
 
 source $ZSH/oh-my-zsh.sh
 
+autoload -Uz compinit && compinit
+
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support
