@@ -25,6 +25,9 @@ if [[ $(grep /zsh$ /etc/shells | tail -1) ]]; then
   # fzf tab completion
   git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
 
+  # auto update third party plugins
+  git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
+
   # Install PowerLevel10k theme
   git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/powerlevel10k
 
