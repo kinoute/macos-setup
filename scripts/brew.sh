@@ -77,6 +77,7 @@ brew install ipython
 brew install gpg
 brew install pinentry
 brew install pinentry-mac
+brew install lnav
 
 # Core Casks
 brew cask install flux
