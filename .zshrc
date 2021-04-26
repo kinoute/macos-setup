@@ -85,6 +85,7 @@ plugins=(git
   zsh-autosuggestions
   fast-syntax-highlighting
   zsh-completions
+  autoupdate
 )
 
 # Theme option
