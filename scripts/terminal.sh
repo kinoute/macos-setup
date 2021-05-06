@@ -58,10 +58,6 @@ cp -f .vimrc ~/
 # Install plugins
 vim +PluginInstall +qall
 
-# Install custom Vim color scheme
-mkdir -p ~/.vim/colors || true
-cp -f iterm/hivacruz.vim ~/.vim/colors/
-
 ###############################################################################
 # Terminal & iTerm 2                                                          #
 ###############################################################################
@@ -80,3 +76,4 @@ cp -f .condarc ~/
 cp -f .gemrc ~/
 cp -f .screenrc ~/
 cp -f .wgetrc ~/
+cp -f .tmux.conf ~/
