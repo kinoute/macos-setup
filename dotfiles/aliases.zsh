@@ -33,15 +33,13 @@ fi
 
 if [[ ! -x "$(command -v exa)" ]]; then
   alias l="ls -lF ${colorflag}"
+  alias ld="ls -lfash ${colorflag} */"
+  alias lf="ls -lfash ${colorflag} -p | grep -v '/'"
 else
   alias l="exa -l -h --icons --classify -a --ignore-glob=".DS_Store""
+  alias ld="exa -l -h --icons --classify -a -d */"
+  alias lf="exa -l -h --icons --classify -a --color always | grep -v '/'"
 fi
-
-# List all files colorized in long format, excluding . and ..
-alias la="ls -lAF ${colorflag}"
-
-# List only directories
-alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"

@@ -1,10 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+
 export PATH="/usr/local/opt/ruby@2.6/bin:$PATH"
 
-# miniconda
-export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/opt/libxml2/lib/pkgconfig:/opt/X11/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig
 
 # Oh my Zsh framework
 export ZSH=~/.oh-my-zsh

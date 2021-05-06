@@ -1,7 +1,7 @@
 # short alt. to man, see few examples (ex: 'cheat curl')
- function cheat() {
+function cheat() {
    curl cht.sh/$1
- }
+}
 
 # Git add and git commit at the same time
 function ac() {
