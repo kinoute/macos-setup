@@ -11,6 +11,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'Yggdroot/indentLine'
+" Plugin 'file:////Users/kinoute/Sites/vim-hivacruz-theme'
+Plugin 'kinoute/vim-hivacruz-theme'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
 
 " Productivity
 Plugin 'tpope/vim-commentary'
@@ -18,25 +22,23 @@ Plugin 'zxqfl/tabnine-vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'mtth/scratch.vim'
+Plugin 'romainl/vim-cool'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 Plugin 'w0rp/ale', { 'for': 'rust' }
 
 " Languages and syntax
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'fatih/vim-go'
-Plugin 'elzr/vim-json', { 'for': 'json' }
-Plugin 'rust-lang/rust.vim', { 'for': 'rust' }
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'StanAngeloff/php.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'preservim/nerdtree'
-Plugin 'chr4/nginx.vim'
-Plugin 'vim-python/python-syntax'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'uiiaoo/java-syntax.vim'
+Plugin 'tpope/vim-rails'
+Plugin 'dbestevez/smarty.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -61,27 +63,54 @@ set completeopt-=preview
 set laststatus=2
 set noshowmode
 set nofoldenable
+set nocursorcolumn
 set updatetime=100
+set cursorline
+set incsearch
+set hlsearch
+set mouse+=a
+set showmatch
+set clipboard=unnamed
+set wildmenu
+set norelativenumber
 
-let g:lightline = {
-      \ 'colorscheme': 'ayu_mirage',
-      \ }
+" code folding
+set foldmethod=indent
+set foldnestmax=10
+set foldlevel=1
+" set foldcolumn=2
 
-let g:indentLine_leadingSpaceEnabled = 0
-" Vim
-let g:indentLine_color_term = 239
-" GVim
-let g:indentLine_color_gui = '#31364a'
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'hivacruz'
+let g:airline_powerline_fonts = 1
 
-" php
-let g:php_sql_query = 1
-let g:php_html_in_string = 1
-let g:php_var_selector_is_identifier = 1
+" see total matches while searching
+let g:CoolTotalMatches = 1
 
-" python
-let g:python_highlight_all = 1
+" don't highlight linting messages
+let g:ale_set_highlights = 0
+
+" lightline
+let g:lightline = {'colorscheme': 'hivacruz'}
+
+" tmux
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" git gutter
+let g:gitgutter_highlight_lines = 0
 
 map <C-n> :NERDTreeToggle<CR>
+
+"open nerdtree when no argument is passed to vi
+function! StartUp()
+    if 0 == argc()
+        NERDTree
+    end
+endfunction
+
+autocmd VimEnter * call StartUp()
 
 " show scope under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -95,5 +124,3 @@ inoremap [ []<left>
 inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
-
-
