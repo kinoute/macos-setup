@@ -1,14 +1,21 @@
 [user]
-	name = Yann Defretin
-	email = yann@defret.in
-    signingkey = <GPG_SIGNING_KEY>
+    name = Yann Defretin
+    email = yann@defret.in
+    signingkey = E017A93CC25F6F42BCD48295B426EC9CACC79704
 [core]
     excludesfile = ~/.gitignore
-    pager = delta --plus-color="#012800" --minus-color="#340001"
+    pager = delta
+[delta]
+    syntax-theme = Dracula
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    features = navigate side-by-side line-numbers decorations
+    line-numbers = true
+    side-by-side = true
 [interactive]
     diffFilter = delta --color-only
 [github]
-	user = kinoute
+    user = kinoute
 [color]
     ui = true
 [color "diff-highlight"]
@@ -29,6 +36,6 @@
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
 [gpg]
-    program = gpg
+    program = /usr/local/bin/gpg
 [commit]
     gpgsign = true
