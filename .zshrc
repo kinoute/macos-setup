@@ -1,8 +1,6 @@
-# Profiling ZSH shell
 # zmodload zsh/zprof
-# use "zprof" or add it at the end
-
 # If you come from bash you might have to change your $PATH.
+
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 DEFAULT_USER=kinoute
 
@@ -74,18 +72,18 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
-  autojump
-  pip
-  python
-  osx
-  docker
-  docker-compose
-  fzf
-  fzf-tab
-  zsh-autosuggestions
-  fast-syntax-highlighting
-  zsh-completions
-  autoupdate
+    autojump
+    pip
+    python
+    osx
+    docker
+    docker-compose
+    fzf
+    fzf-tab
+    zsh-autosuggestions
+    fast-syntax-highlighting
+    zsh-completions
+    autoupdate
 )
 
 # Theme option
@@ -101,11 +99,11 @@ POWERLEVEL9K_SHORTEN_DELIMITER=""
 export PROMPT='
 
 $reset_color→ '
-prompt_context() {}
+prompt_context () { }
+
+fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
 
 source $ZSH/oh-my-zsh.sh
-
-autoload -Uz compinit && compinit
 
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
@@ -146,6 +144,7 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# zprof
