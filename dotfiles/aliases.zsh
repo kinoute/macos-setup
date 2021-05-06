@@ -36,8 +36,8 @@ if [[ ! -x "$(command -v exa)" ]]; then
   alias ld="ls -lfash ${colorflag} */"
   alias lf="ls -lfash ${colorflag} -p | grep -v '/'"
 else
-  alias l="exa -l -h --icons --classify -a --ignore-glob=".DS_Store""
-  alias ld="exa -l -h --icons --classify -a -d */"
+  alias l="exa -l -h --icons --classify -a --ignore-glob='.DS_Store' --color always"
+  alias ld="exa -l -h --icons --classify -a -d --color always */"
   alias lf="exa -l -h --icons --classify -a --color always | grep -v '/'"
 fi
 
