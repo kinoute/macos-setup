@@ -3,5 +3,6 @@
 "run_on_save": true, // change this from false
 //add both of these lines
 "translate_tabs_to_spaces": true,
-"tab_size": 2
+"tab_size": 2,
+"keep_blank_lines": 2
 }
