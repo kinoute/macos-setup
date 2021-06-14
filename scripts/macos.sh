@@ -332,11 +332,11 @@ open -a "Sublime Text"
 osascript -e 'tell app "Sublime Text" to quit'
 
 # Download Package Control manually
-wget -q https://packagecontrol.io/Package%20Control.sublime-package -P ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages
+wget -q https://packagecontrol.io/Package%20Control.sublime-package -P ~/Library/Application\ Support/Sublime\ Text/Installed\ Packages
 
 # Install Sublime Text settings
-rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/*
-cp -r ./sublime/* ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
+rm -rf ~/Library/Application\ Support/Sublime\ Text/Packages/User/*
+cp -r ./sublime/* ~/Library/Application\ Support/Sublime\ Text/Packages/User/
 
 # create cli shortcuts
 ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl

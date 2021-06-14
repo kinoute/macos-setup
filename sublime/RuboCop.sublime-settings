@@ -1,4 +1,5 @@
 {
-	"mark_issues_in_view": true,
-	"rubocop_command": "-a -P"
+	"check_for_rvm": false,
+  "mark_issues_in_view": false,
+  "rubocop_command": ""
 }

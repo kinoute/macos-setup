@@ -1,22 +1,29 @@
 {
-	"always_show_minimap_viewport": false,
+	"theme": "Hivacruz.sublime-theme",
+	"color_scheme": "Packages/Hivacruz Theme/Hivacruz.sublime-color-scheme",
+	"ignored_packages":
+	[
+		"Rust",
+		"Vintage",
+	],
 	"auto_complete": true,
 	"auto_complete_commit_on_tab": true,
 	"auto_complete_triggers":
 	[
 		{
 			"characters": ".(){}[],'\"=<>/\\+-|&*%=$#@! ",
-			"selector": "source.python"
+			"selector": "source.python",
 		},
 		{
 			"characters": ":.(){}[],'\"=<>/\\+-|&*%=$#@! ",
-			"selector": "source & - source.python - constant.numeric"
+			"selector": "source & - source.python - constant.numeric",
 		},
 		{
 			"characters": " qazwsxedcrfvtgbyhnujmikolpQAZWSXEDCRFVTGBYHNUJMIKOLP",
-			"selector": "text"
+			"selector": "text",
 		}
 	],
+	"always_show_minimap_viewport": false,
 	"binary_file_patterns":
 	[
 		"*.jpg",
@@ -38,21 +45,11 @@
 		"node_modules/*"
 	],
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/Hivacruz.tmTheme",
 	"copy_with_empty_selection": true,
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Roboto Mono Medium Nerd Font Complete",
 	"font_size": 12,
 	"hot_exit": false,
-	"ignored_packages":
-	[
-		"Color Highlighter",
-		"Fuse",
-		"HTMLBeautify",
-		"Markdown",
-		"SublimeLinter-contrib-bashate",
-		"Vintage"
-	],
 	"indent_guide_options":
 	[
 		"draw_normal",
@@ -61,23 +58,14 @@
 	"index_files": true,
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
-	"material_theme_accent_cyan": true,
-	"material_theme_accent_scrollbars": true,
-	"material_theme_bright_scrollbars": true,
-	"material_theme_compact_sidebar": true,
-	"material_theme_contrast_mode": true,
-	"material_theme_small_statusbar": true,
-	"material_theme_small_tab": true,
-	"material_theme_tabs_separator": true,
-	"material_theme_titlebar": true,
-	"material_theme_tree_headings": true,
 	"mini_diff": false,
 	"open_files_in_new_window": false,
 	"overlay_scroll_bars": "enabled",
 	"tab_size": 4,
-	"theme": "Material-Theme-Palenight.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"update_check": false,
-	"word_wrap": true
+	"word_wrap": true,
+	"caret_style": "blink",
+	"draw_shadows": false,
 }
