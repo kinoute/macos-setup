@@ -78,6 +78,7 @@ brew install gpg
 brew install pinentry
 brew install pinentry-mac
 brew install lnav
+brew install ag
 
 # Core Casks
 brew cask install flux

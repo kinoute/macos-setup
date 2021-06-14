@@ -70,6 +70,14 @@ function ssht() {
     ssh -t "$@" "which tmux 2>&1 > /dev/null && tmux -u -CC new -A -s remote"
     }
 
+# find pattern with "age pattern" and open files with vim tabs
+age() {
+    vim \
+        +'/\v'"${1/\//\\/}" \
+        +':silent tabdo :1 | normal! n' \
+        +':tabfirst' \
+        -p $(ag "$@" | cut -d: -f1 | sort -u)
+}
 
 function lazy_load() {
     # Act as a stub to another shell function/command. When first run, it will load the actual function/command then execute it.
