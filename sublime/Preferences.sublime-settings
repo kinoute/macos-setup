@@ -42,7 +42,8 @@
 		"cache/*",
 		"_reports/*",
 		"vendor/*",
-		"node_modules/*"
+		"node_modules/*",
+		".build/*"
 	],
 	"bold_folder_labels": true,
 	"copy_with_empty_selection": true,
