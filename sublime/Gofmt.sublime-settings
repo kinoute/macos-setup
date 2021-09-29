@@ -1,0 +1,7 @@
+{
+  "cmds": [
+    ["gofmt", "-e", "-s"],
+    ["goimports", "-e"]
+  ],
+  "format_on_save": true
+}

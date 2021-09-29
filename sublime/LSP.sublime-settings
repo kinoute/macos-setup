@@ -1,0 +1,12 @@
+{
+    "clients": {
+        "gopls": {
+            "enabled": true,
+            "command": ["/Users/kinoute/sites/go/bin/gopls"],
+            "selector": "source.go",
+            "initializationOptions": {
+                "experimentalWorkspaceModule": false
+            }
+        }
+    }
+}

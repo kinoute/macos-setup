@@ -129,6 +129,9 @@ brew install shfmt
 # Format Python code
 brew install black
 
+# Lint go code
+brew install golangci-lint
+
 # Install Docker, which requires virtualbox
 brew cask install docker
 brew install docker-compose
