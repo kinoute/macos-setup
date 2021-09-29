@@ -81,15 +81,15 @@ brew install lnav
 brew install ag
 
 # Core Casks
-brew cask install flux
-brew cask install spotify
-brew cask install vlc
-brew cask install the-unarchiver
-brew cask install lulu
-brew cask install onyx
-brew cask install transmission
-brew cask install slack
-brew cask install ngrok
+brew install --cask flux
+brew install --cask spotify
+brew install --cask vlc
+brew install --cask the-unarchiver
+brew install --cask lulu
+brew install --cask onyx
+brew install --cask transmission
+brew install --cask slack
+brew install --cask ngrok
 
 # Apps fom Mac App Store
 mas install '1440147259' # Adguard For Safari
@@ -97,21 +97,21 @@ mas install '1429386865' # Nightlight (dark mode in Safari)
 
 # Hackintosh stuff
 # the newest version of karabiner seems buggy, use 12.3.0 instead
-# brew cask install karabiner-elements
-brew cask install https://raw.githubusercontent.com/Homebrew/homebrew-cask/4df3cd10135add216efff6a6feac9793d3c7910f/Casks/karabiner-elements.rb
+# brew install --cask karabiner-elements
+brew install --cask https://raw.githubusercontent.com/Homebrew/homebrew-cask/4df3cd10135add216efff6a6feac9793d3c7910f/Casks/karabiner-elements.rb
 brew install neofetch
 
 # Remove mouse acceleration
 brew tap homebrew/cask-drivers
-brew cask install steelseries-exactmouse-tool
+brew install --cask steelseries-exactmouse-tool
 
 # Development tool casks
-brew cask install iterm2
-brew cask install sublime-text
-brew cask install virtualbox
-brew cask install brave-browser
-brew cask install miniconda
-brew cask install visual-studio-code
+brew install --cask iterm2
+brew install --cask sublime-text
+brew install --cask virtualbox
+brew install --cask brave-browser
+brew install --cask miniconda
+brew install --cask visual-studio-code
 
 # Correct PHP code
 brew install php-cs-fixer
@@ -133,28 +133,28 @@ brew install black
 brew install golangci-lint
 
 # Install Docker, which requires virtualbox
-brew cask install docker
+brew install --cask docker
 brew install docker-compose
 brew install lazydocker
 
 # Fonts
 brew tap homebrew/cask-fonts
-brew cask install font-robotomono-nerd-font
+brew install --cask font-robotomono-nerd-font
 
 # Better quick look support
-brew cask install qlcolorcode
-brew cask install qlstephen
-brew cask install qlmarkdown
-brew cask install quicklook-json
-brew cask install qlprettypatch
-brew cask install qlvideo
-brew cask install suspicious-package
-brew cask install webpquicklook
-brew cask install quicklook-csv
-brew cask install betterzip
+brew install --cask qlcolorcode
+brew install --cask qlstephen
+brew install --cask qlmarkdown
+brew install --cask quicklook-json
+brew install --cask qlprettypatch
+brew install --cask qlvideo
+brew install --cask suspicious-package
+brew install --cask webpquicklook
+brew install --cask quicklook-csv
+brew install --cask betterzip
 
 # sse jupyter notebooks from quicklook
-brew cask install jupyter-notebook-viewer
+brew install --cask jupyter-notebook-viewer
 
 # restart quick look
 qlmanage -r
