@@ -26,6 +26,7 @@ Temporary Items
 # Python
 __pycache__/
 *.py[cod]
+.mypy_cache/
 
 # Compiled Python files
 *.pyc
