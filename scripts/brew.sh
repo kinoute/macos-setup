@@ -129,8 +129,9 @@ brew install shfmt
 # Format Python code
 brew install black
 
-# Lint go code
+# Go code
 brew install golangci-lint
+brew install goreleaser
 
 # Install Docker, which requires virtualbox
 brew install --cask docker
@@ -140,6 +141,7 @@ brew install lazydocker
 # Fonts
 brew tap homebrew/cask-fonts
 brew install --cask font-robotomono-nerd-font
+brew install --cask font-roboto-mono-for-powerline
 
 # Better quick look support
 brew install --cask qlcolorcode
