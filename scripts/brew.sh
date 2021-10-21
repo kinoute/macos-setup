@@ -128,6 +128,7 @@ brew install shfmt
 
 # Format Python code
 brew install black
+brew install pre-commit
 
 # Go code
 brew install golangci-lint
