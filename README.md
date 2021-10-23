@@ -47,7 +47,7 @@ bash scripts/brew.sh
 
 The comments inside the file speak for themselves but to sum up, this script installs:
 
-* A few languages (python, php, zsh) ;
+* A few languages (python, php, zsh, go) ;
 * Updated tools (vim, grep, openssh, screen) ;
 * GNU tools (sed, find, locate, xargs...) ;
 * Useful binaries (git, imagemagick, pv, rename, tree, jq, ffmpeg, ripgrep, wget, htop, watch...) ;
