@@ -21,4 +21,5 @@ if [ ! -f ~/.gitconfig ]; then
 fi
 
 # add gpg-agent config
+mkdir ~/.gnupg
 cp ./gpg-agent.conf ~/.gnupg/gpg-agent.conf
