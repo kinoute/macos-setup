@@ -22,6 +22,8 @@
         "Hivacruz Theme",
         "INI",
         "LSP",
+        "LSP-json",
+        "LSP-yaml",
         "nginx",
         "Package Control",
         "PackageResourceViewer",
