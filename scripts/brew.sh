@@ -91,6 +91,9 @@ brew install --cask transmission
 brew install --cask slack
 brew install --cask ngrok
 
+# Markdown editor
+brew install typora
+
 # Apps fom Mac App Store
 mas install '1440147259' # Adguard For Safari
 mas install '1429386865' # Nightlight (dark mode in Safari)
