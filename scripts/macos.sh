@@ -329,6 +329,7 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Open and close Sublime Text quickly to generate folders
 open -a "Sublime Text"
+sleep 5
 osascript -e 'tell app "Sublime Text" to quit'
 
 # Download Package Control manually
