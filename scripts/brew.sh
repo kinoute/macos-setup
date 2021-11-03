@@ -79,6 +79,10 @@ brew install pinentry
 brew install pinentry-mac
 brew install lnav
 brew install ag
+brew install xsv
+brew install youtube-dl
+brew install hadolint
+brew install jupyter
 
 # Core Casks
 brew install --cask flux
