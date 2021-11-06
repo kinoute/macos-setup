@@ -170,7 +170,7 @@ restore_free_channel: true
 #   creating a new named environment, the environment will be placed in
 #   the first writable location.
 envs_dirs:
-  - C:\tools\miniconda3\envs;
+  # - C:\tools\miniconda3\envs;
 
 # pkgs_dirs (sequence: str)
 #   env var string delimiter: ','
@@ -181,9 +181,9 @@ envs_dirs:
 # Oct 18, 2019: Had to update because there were 3 listed for no reason
 # Oooo actually can we add one to the base of big envs?
 pkgs_dirs:
-  - C:\tools\miniconda3\pkgs
-  - C:\tools\miniconda3\envs\working\pkgs
-  - C:\tools\miniconda3\envs\anaconda\pkgs
+  # - C:\tools\miniconda3\pkgs
+  # - C:\tools\miniconda3\envs\working\pkgs
+  # - C:\tools\miniconda3\envs\anaconda\pkgs
 
 # default_threads (int)
 #   Threads to use by default for parallel operations.  Default is None,
