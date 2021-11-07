@@ -62,7 +62,7 @@
 	"bold_folder_labels": true,
 	"copy_with_empty_selection": true,
 	"ensure_newline_at_eof_on_save": true,
-	"font_face": "Roboto Mono Medium Nerd Font Complete",
+	"font_face": "RobotoMono-Regular",
 	"font_size": 12,
 	"hot_exit": false,
 	"indent_guide_options":
