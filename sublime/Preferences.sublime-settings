@@ -4,6 +4,7 @@
 	"ignored_packages":
 	[
 		"All Autocomplete",
+		"AutoPEP8",
 		"Better CoffeeScript",
 		"ColorHints",
 		"Elixir",
