@@ -21,6 +21,7 @@
         "Golang Build",
         "Hivacruz Theme",
         "INI",
+        "isort",
         "LSP",
         "LSP-json",
         "LSP-yaml",
