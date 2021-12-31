@@ -84,6 +84,7 @@ brew install youtube-dl
 brew install hadolint
 brew install jupyter
 brew install svn
+brew install dive
 
 # Core Casks
 brew install --cask flux
