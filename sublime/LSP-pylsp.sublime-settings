@@ -1,0 +1,31 @@
+// Settings in here override those in "LSP-pylsp/LSP-pylsp.sublime-settings"
+
+{
+    "language_servers": {
+        "pylsp": {
+            "serverSettings": {
+                "pylsp.plugins.pydocstyle.enabled": false,
+                "pylsp.plugins.pyflakes.enabled": false,
+                "pylsp.plugins.flake8.enabled": false,
+                "pylsp.plugins.pycodestyle.enabled": false,
+            },
+        },
+    },
+    "settings": {
+        "pylsp.configurationSources": ["flake8"],
+        "pylsp.plugins.pydocstyle.enabled": false,
+        "pylsp.plugins.pyflakes.enabled": false,
+        "pylsp.plugins.flake8.enabled": false,
+        "pylsp.plugins.pycodestyle.enabled": false,
+        "language_servers": {
+            "pylsp": {
+                "serverSettings": {
+                    "pylsp.plugins.pydocstyle.enabled": false,
+                    "pylsp.plugins.pyflakes.enabled": false,
+                    "pylsp.plugins.flake8.enabled": false,
+                    "pylsp.plugins.pycodestyle.enabled": false,
+                },
+            },
+        },
+    },
+}
