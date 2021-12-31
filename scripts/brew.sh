@@ -85,6 +85,7 @@ brew install hadolint
 brew install jupyter
 brew install svn
 brew install dive
+brew install nmap
 
 # Core Casks
 brew install --cask flux
