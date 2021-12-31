@@ -87,7 +87,7 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 alias c="tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files and python cache folders
-alias cleanup="find -E . -regex '.*(\.DS_Store|__pycache__|\.mypy_cache).*' -ls -delete"
+alias cleanup="find -E . -regex '.*(\.DS_Store|__pycache__|\.mypy_cache|\.pytest_cache).*' -ls -delete"
 
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.
@@ -106,7 +106,7 @@ alias urlencode='python -c "import sys, urllib.parse as ul; print(ul.quote_plus(
 alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
 
 # Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias afk="osascript -e 'tell app \"System Events\" to keystroke \"q\" using {control down, command down}'"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias refresh='source ~/.zshrc; echo "Reloaded .zshrc."'

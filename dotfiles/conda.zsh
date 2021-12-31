@@ -1,1 +1,1 @@
-source /usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh
+source /opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh
