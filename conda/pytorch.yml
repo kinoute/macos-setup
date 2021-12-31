@@ -1,10 +1,10 @@
-name: pytorch-py3p6-env
+name: pytorch-py3p8-env
 channels:
   - conda-forge
   - ioam
   - soumith
 dependencies:
-  - python=3.6
+  - python=3.8
   - numpy
   - mkl
   - holoviews
