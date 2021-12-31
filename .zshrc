@@ -75,7 +75,7 @@ plugins=(git
     autojump
     pip
     python
-    osx
+    macos
     docker
     docker-compose
     fzf
