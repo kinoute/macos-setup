@@ -6,6 +6,8 @@
 
 # Check for Homebrew,
 # Install if we don't have it
+# Force the deletion of potential old homebrew installation
+rm -rf /opt/homebrew
 if test ! $(which brew); then
   echo "Installing homebrew..."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -72,7 +74,7 @@ brew install fzf
 brew install htop
 brew install fd
 brew install autojump
-brew instal ncdu
+brew install ncdu
 brew install ipython
 brew install gpg
 brew install pinentry
