@@ -1,7 +1,3 @@
-[user]
-    name = Yann Defretin
-    email = yann@defret.in
-    signingkey = E017A93CC25F6F42BCD48295B426EC9CACC79704
 [core]
     excludesfile = ~/.gitignore
     pager = delta
@@ -14,8 +10,6 @@
     side-by-side = true
 [interactive]
     diffFilter = delta --color-only
-[github]
-    user = kinoute
 [color]
     ui = true
 [color "diff-highlight"]
