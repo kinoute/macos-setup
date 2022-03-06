@@ -66,8 +66,10 @@ function extract () {
    fi
 }
 
+# Use Tmux for remote SSH connections
 function ssht() {
-    ssh -t "$@" "which tmux 2>&1 > /dev/null && tmux -u -CC new -A -s remote"
+    tmux_session_name=${2:-"remote"}
+    ssh -t "$1" "which tmux 2>&1 > /dev/null && tmux -u -CC new -A -s $tmux_session_name"
     }
 
 # find pattern with "age pattern" and open files with vim tabs
