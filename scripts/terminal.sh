@@ -71,6 +71,9 @@ sudo cp -f ./iterm/com.googlecode.iterm2.plist ~/Library/Preferences/
 # Install Hivacruz theme for iTerm
 open -a iTerm ./iterm/Hivacruz.itermcolors
 
+# Install lessfilter for better preview
+cp -f .lessfilter ~/
+
 # Misc rc files
 cp -f .condarc ~/
 cp -f .gemrc ~/
