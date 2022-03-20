@@ -68,6 +68,7 @@ brew install pandoc
 brew install jq
 brew install ffmpeg
 brew install ripgrep
+brew install tmux
 brew install bat
 brew install exa
 brew install wget
@@ -91,6 +92,8 @@ brew install jupyter
 brew install svn
 brew install dive
 brew install nmap
+brew install lesspipe
+brew install exiftool
 
 # Core Casks
 brew install --cask flux
