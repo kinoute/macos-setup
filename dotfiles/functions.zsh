@@ -70,7 +70,39 @@ function extract () {
 function ssht() {
     tmux_session_name=${2:-"remote"}
     ssh -t "$1" "which tmux 2>&1 > /dev/null && tmux -u -CC new -A -s $tmux_session_name"
-    }
+}
+
+# Find in files with ripgrep + fzf + bat
+function ff() {
+  # 1. Search for text in files using Ripgrep
+  # 2. Interactively restart Ripgrep with reload action
+  # 3. Open the file in Vim
+  RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+  INITIAL_QUERY="${*:-}"
+  selected=$(
+    FZF_DEFAULT_COMMAND="$RG_PREFIX $(printf %q "$INITIAL_QUERY")" \
+    fzf --ansi \
+        --multi \
+        --reverse \
+        --disabled \
+        --query "$INITIAL_QUERY" \
+        --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
+        --delimiter : \
+        --preview 'bat --color=always {1} --highlight-line {2}' \
+        --preview-window '+{2}+3/3,~3'
+  )
+
+  # Rewrite finames + line to be opened with sublime text
+  filenames=""
+  while read file; do
+    filenames+=$(echo "$file" | cut -d ':' -f1,2)
+    filenames+=" "
+  done < <(echo "$selected")
+
+  # Open files with ST if we have some filenames
+  [ -n "${selected}" ] && subl $(echo "$filenames" | xargs)
+}
+
 
 # find pattern with "age pattern" and open files with vim tabs
 age() {
