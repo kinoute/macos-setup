@@ -101,6 +101,10 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " git gutter
 let g:gitgutter_highlight_lines = 0
 
+" fzf
+let g:fzf_layout = { 'down': '40%' }
+nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
+
 map <C-n> :NERDTreeToggle<CR>
 
 "open nerdtree when no argument is passed to vi
