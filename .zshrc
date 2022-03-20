@@ -105,6 +105,13 @@ fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
 
 source $ZSH/oh-my-zsh.sh
 
+# disable ssh auto completion with /etc/hosts
+zstyle ':completion:*:(ssh|scp|rsync):*' hosts off
+
+# add completion/preview for a lot of things
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+export LESSOPEN='|~/.lessfilter %s'
+
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support
