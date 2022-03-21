@@ -31,7 +31,6 @@ else # macOS `ls`
 fi
 
 # List all files colorized in long format
-
 if [[ ! -x "$(command -v exa)" ]]; then
   alias l="ls -lF ${colorflag}"
   alias ld="ls -lfash ${colorflag} */"
@@ -40,6 +39,21 @@ else
   alias l="exa -l -h --icons --classify -a --ignore-glob='.DS_Store' --color always"
   alias ld="exa -l -h --icons --classify -a -d --color always */"
   alias lf="exa -l -h --icons --classify -a --color always | grep -v '/'"
+
+  # Tree replacements
+  TREE_IGNORE=".git|cache|log|logs|node_modules|vendor"
+
+  # Folders
+  alias ldt='l --tree -D -L 2 -I ${TREE_IGNORE}'
+  alias ldtt='l --tree -D -L 3 -I ${TREE_IGNORE}'
+  alias ldttt='l --tree -D -L 4 -I ${TREE_IGNORE}'
+  alias ldtttt='l --tree -D -L 5 -I ${TREE_IGNORE}'
+
+  # With files
+  alias lt='l --tree -L 2 --group-directories-first -I ${TREE_IGNORE}'
+  alias ltt='l --tree -L 3 --group-directories-first -I ${TREE_IGNORE}'
+  alias lttt='l --tree -L 4 --group-directories-first -I ${TREE_IGNORE}'
+  alias ltttt='l --tree -L 5 --group-directories-first -I ${TREE_IGNORE}'
 fi
 
 # Always use color output for `ls`
