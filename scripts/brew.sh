@@ -94,6 +94,7 @@ brew install dive
 brew install nmap
 brew install lesspipe
 brew install exiftool
+brew install k9s
 
 # Core Casks
 brew install --cask flux

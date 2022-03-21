@@ -71,6 +71,9 @@ sudo cp -f ./iterm/com.googlecode.iterm2.plist ~/Library/Preferences/
 # Install Hivacruz theme for iTerm
 open -a iTerm ./iterm/Hivacruz.itermcolors
 
+# Install k9s custom skin based on Nord theme
+cp -f ./iterm/k9s-skin.yml ~/Library/Application\ Support/k9s/skin.yml
+
 # Install lessfilter for better preview
 cp -f .lessfilter ~/
 
