@@ -81,14 +81,13 @@ function ff() {
   INITIAL_QUERY="${*:-}"
   selected=$(
     FZF_DEFAULT_COMMAND="$RG_PREFIX $(printf %q "$INITIAL_QUERY")" \
-    fzf --ansi \
-        --multi \
+    fzf --multi \
         --reverse \
         --disabled \
         --query "$INITIAL_QUERY" \
         --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
         --delimiter : \
-        --preview 'bat --color=always {1} --highlight-line {2}' \
+        --preview 'bat --style=numbers --color=always {1} --highlight-line {2}' \
         --preview-window '+{2}+3/3,~3'
   )
 
