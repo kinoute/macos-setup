@@ -3,21 +3,27 @@
 mime=$(file -bL --mime-type "$1")
 category=${mime%%/*}
 kind=${mime##*/}
+
 if [ -d "$1" ]; then
 	exa --git -hl --color=always --icons "$1"
 elif [ "$category" = image ]; then
-	chafa "$1"
+	chafa --size 32x18 "$1"
+    echo ""
 	exiftool "$1"
 elif [ "$kind" = vnd.openxmlformats-officedocument.spreadsheetml.sheet ] || \
 	[ "$kind" = vnd.ms-excel ]; then
 	in2csv "$1" | xsv table | bat -ltsv --color=always
+elif [ "$kind" = csv ]; then
+    tv -c 4 -a "$1"
 elif [ "$category" = text ]; then
 	bat --style=numbers --italic-text=always --color=always "$1"
+elif [ "$kind" = pdf ]; then
+    pdftotext -f 0 "$1" -
 else
 	if [ ! -s "$1" ]; then
 		bat --style=numbers --italic-text=always --color=always "$1"
 	else
-		lesspipe.sh "$1" | bat --style=numbers --italic-text=always --color=always
+		bat --style=numbers --italic-text=always --color=always "$1"
 	fi
 fi
 # lesspipe.sh don't use exa, bat and chafa, it use ls and exiftool. so we create a lessfilter.
