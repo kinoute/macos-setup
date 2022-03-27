@@ -4,46 +4,33 @@
 # My Zsh                                                                      #
 ###############################################################################
 
-# Install Zsh related stuff only if zsh is installed already
-if [[ $(grep /zsh$ /etc/shells | tail -1) ]]; then
+# Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-  # set up zsh as default shell
-  chsh -s $(which zsh)
+# Auto-suggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-  # Oh My Zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# syntax highlightings
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
 
-  # Auto-suggestions
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# completions
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 
-  # syntax highlightings
-  git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+# fzf tab completion
+git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
 
-  # completions
-  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+# auto update third party plugins
+git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
 
-  # fzf tab completion
-  git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+# Install PowerLevel10k theme
+git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/powerlevel10k
 
-  # auto update third party plugins
-  git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
+# Make terminal faster
+touch ~/.hushlogin
 
-  # Install PowerLevel10k theme
-  git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/powerlevel10k
-
-  # Make terminal faster
-  touch ~/.hushlogin
-
-  # copy dotfiles and zshrc
-  cp ./dotfiles/* ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}
-  cp -f .zshrc ~/
-
-else
-
-  echo 'Not installing Zsh-related stuff because ZSH is not installed. run "brew install zsh".'
-  exit
-
-fi
+# copy dotfiles and zshrc
+cp ./dotfiles/* ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}
+cp -f .zshrc ~/
 
 ###############################################################################
 # Vim                                                                         #
