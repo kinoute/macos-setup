@@ -23,10 +23,10 @@ bash ./scripts/macos.sh
 echo "Setting up Git.."
 bash ./scripts/git.sh
 
-echo "Setting up Terminal, ZSH and iTerm2.."
-bash ./scripts/terminal.sh
-
 echo "Setting up SSH Key.."
 bash ./scripts/ssh.sh
+
+echo "Setting up Terminal, ZSH and iTerm2.."
+bash ./scripts/terminal.sh
 
 echo "DONE!"
