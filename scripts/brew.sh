@@ -15,7 +15,6 @@ if test ! $(which brew); then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-
 # Make sure we’re using the latest Homebrew.
 brew update
 
@@ -95,6 +94,9 @@ brew install nmap
 brew install lesspipe
 brew install exiftool
 brew install k9s
+brew install chafa
+brew install csvkit
+brew install tidy-viewer
 
 # Core Casks
 brew install --cask flux
@@ -112,13 +114,6 @@ brew install typora
 
 # Apps fom Mac App Store
 mas install '1440147259' # Adguard For Safari
-mas install '1429386865' # Nightlight (dark mode in Safari)
-
-# Hackintosh stuff
-# the newest version of karabiner seems buggy, use 12.3.0 instead
-# brew install --cask karabiner-elements
-brew install --cask https://raw.githubusercontent.com/Homebrew/homebrew-cask/4df3cd10135add216efff6a6feac9793d3c7910f/Casks/karabiner-elements.rb
-brew install neofetch
 
 # Remove mouse acceleration
 brew tap homebrew/cask-drivers
