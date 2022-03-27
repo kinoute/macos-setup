@@ -79,9 +79,11 @@ function ff() {
   # 3. Open the file in Vim
   RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
   INITIAL_QUERY="${*:-}"
+  export LESSOPEN='|~/.lessfilter %s'
   selected=$(
     FZF_DEFAULT_COMMAND="$RG_PREFIX $(printf %q "$INITIAL_QUERY")" \
-    fzf --multi \
+    fzf --ansi \
+        --multi \
         --reverse \
         --disabled \
         --query "$INITIAL_QUERY" \
