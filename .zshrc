@@ -13,6 +13,10 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+# zsh tmux settings
+ZSH_TMUX_AUTOSTART='true'
+export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -72,8 +76,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
+    conda-zsh-completion
     autojump
     pip
+    ripgrep
+    fd
     python
     macos
     docker
@@ -101,21 +108,39 @@ export PROMPT='
 $reset_color→ '
 prompt_context () { }
 
+fpath=(/opt/homebrew/opt/curl/share/zsh/site-functions/ $fpath)
 fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
 
 source $ZSH/oh-my-zsh.sh
 
 # disable ssh auto completion with /etc/hosts
-zstyle ':completion:*:(ssh|scp|rsync):*' hosts off
+# zstyle ':completion:*:(ssh|scp|rsync):*' hosts off
+
+h=()
+if [[ -r ~/.ssh/config ]]; then
+  h=($h ${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
+fi
+if [[ -r ~/.ssh/known_hosts ]]; then
+  h=($h ${${${(f)"$(cat ~/.ssh/known_hosts{,2} || true)"}%%\ *}%%,*}) 2>/dev/null
+fi
+if [[ $#h -gt 0 ]]; then
+  zstyle ':completion:*:ssh:*' hosts $h
+  zstyle ':completion:*:scp:*' hosts $h
+  zstyle ':completion:*:rsync:*' hosts $h
+  zstyle ':completion:*:ssht:*' hosts $h
+  zstyle ':completion:*:slogin:*' hosts $h
+fi
 
 # add completion/preview for a lot of things
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+zstyle ':fzf-tab:complete:*:*' fzf-flags --height 99%
 export LESSOPEN='|~/.lessfilter %s'
 
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':fzf-tab:complete:*:options' fzf-preview ''
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # preview directory's content with exa when completing cd
