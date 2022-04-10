@@ -61,6 +61,10 @@ open -a iTerm ./iterm/Hivacruz.itermcolors
 # Install k9s custom skin based on Nord theme
 cp -f ./iterm/k9s-skin.yml ~/Library/Application\ Support/k9s/skin.yml
 
+# Install custom bat config and theme
+mkdir ~/.config && cp -rf ./iterm/bat ~/.config || true
+bat cache --build
+
 # Install lessfilter for better preview
 cp -f .lessfilter ~/
 
