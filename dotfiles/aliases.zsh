@@ -16,9 +16,10 @@ alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias top=htop
 alias cp='cp -iv'
 alias mv='mv -iv'
-alias s='subl .'
+alias r='refresh'
 alias o='open .'
 alias h='history'
+alias v='vim'
 alias drmi='docker rm `docker ps -a | grep Exited | grep -o -e "[0-9a-z]\{12\}"`; docker rmi `docker images | grep \<none\> | grep -o -e "[0-9a-z]\{12\}"`'
 
 # Detect which `ls` flavor is in use
