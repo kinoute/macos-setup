@@ -66,10 +66,34 @@ function extract () {
    fi
 }
 
+# Better alias to open sublime text projects
+function s() {
+  subl_project=$(ls | grep "sublime-project" | head -n 1)
+  if [ -z "$1" ]; then
+    [ -n "$subl_project" ] && subl "$subl_project" && return 0
+    # No sublime project found, open whole folder
+    subl .
+  else
+    subl "$1"
+  fi
+}
+
 # Use Tmux for remote SSH connections
 function ssht() {
     tmux_session_name=${2:-"remote"}
     ssh -t "$1" "which tmux 2>&1 > /dev/null && tmux -u -CC new -A -s $tmux_session_name"
+}
+
+# Simplest port foward function
+function sshpf() {
+  ssh -L $2:127.0.0.1:$2 $1 -N -f -o "ExitOnForwardFailure yes"
+  if [ $? != "0" ]; then
+    echo "Failed to port forward $1 on $2"
+    return 1
+  fi
+
+  echo "Port forwarded service on port $2: http://localhost:$2"
+  open "http://localhost:$2"
 }
 
 # Find in files with ripgrep + fzf + bat
