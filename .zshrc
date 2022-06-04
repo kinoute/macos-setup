@@ -133,8 +133,13 @@ fi
 
 # add completion/preview for a lot of things
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
-zstyle ':fzf-tab:complete:*:*' fzf-flags --height 99%
+zstyle ':fzf-tab:complete:*:*' fzf-flags --preview-window=right --height 99%
 export LESSOPEN='|~/.lessfilter %s'
+
+# disable preview for command options
+zstyle ':fzf-tab:complete:*:options' fzf-preview
+# disable preview for subcommands
+zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
 
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
