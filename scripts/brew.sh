@@ -97,6 +97,7 @@ brew install k9s
 brew install chafa
 brew install csvkit
 brew install tidy-viewer
+brew install dog
 
 # Core Casks
 brew install --cask flux
