@@ -1,0 +1,5 @@
+// See the left pane for the list of settings and valid values
+{
+    "hide_output_panel": true,
+    "debug": 2,
+}

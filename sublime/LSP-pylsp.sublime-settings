@@ -6,7 +6,7 @@
             "serverSettings": {
                 "pylsp.plugins.pydocstyle.enabled": false,
                 "pylsp.plugins.pyflakes.enabled": false,
-                "pylsp.plugins.flake8.enabled": false,
+                "pylsp.plugins.flake8.enabled": true,
                 "pylsp.plugins.pycodestyle.enabled": false,
             },
         },
@@ -15,14 +15,14 @@
         "pylsp.configurationSources": ["flake8"],
         "pylsp.plugins.pydocstyle.enabled": false,
         "pylsp.plugins.pyflakes.enabled": false,
-        "pylsp.plugins.flake8.enabled": false,
+        "pylsp.plugins.flake8.enabled": true,
         "pylsp.plugins.pycodestyle.enabled": false,
         "language_servers": {
             "pylsp": {
                 "serverSettings": {
                     "pylsp.plugins.pydocstyle.enabled": false,
                     "pylsp.plugins.pyflakes.enabled": false,
-                    "pylsp.plugins.flake8.enabled": false,
+                    "pylsp.plugins.flake8.enabled": true,
                     "pylsp.plugins.pycodestyle.enabled": false,
                 },
             },

@@ -1,4 +1,11 @@
 // SublimeLinter Settings - User
 {
-    "debug": false
+    "linters":
+    {
+        "flake8": {
+            "ignore_fixables": false,
+            "args": ["--stdin-display-name", "${file:stdin}"]
+        }
+    },
+    "debug": true
 }

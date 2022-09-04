@@ -1,0 +1,4 @@
+{
+    "executable": "/opt/homebrew/Caskroom/miniconda/base/bin/python3",
+    "environment_directory": "/opt/homebrew/Caskroom/miniconda/base/envs/",
+}
