@@ -94,6 +94,9 @@ brew install nmap
 brew install lesspipe
 brew install exiftool
 brew install k9s
+brew install kubectl
+brew install kustomize
+brew install kubeseal
 brew install chafa
 brew install csvkit
 brew install tidy-viewer
