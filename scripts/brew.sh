@@ -65,6 +65,7 @@ brew install ssh-copy-id
 brew install tree
 brew install pandoc
 brew install jq
+brew install yq
 brew install ffmpeg
 brew install ripgrep
 brew install tmux
