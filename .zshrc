@@ -83,6 +83,8 @@ plugins=(git
     fd
     python
     macos
+    kubectl
+    sublime
     docker
     docker-compose
     fzf
