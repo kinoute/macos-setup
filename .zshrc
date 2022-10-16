@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 
@@ -59,6 +66,11 @@ export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# zsh tmux settings
+ZSH_TMUX_AUTOSTART='true'
+export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
+
+
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
@@ -78,6 +90,7 @@ export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 plugins=(git
     conda-zsh-completion
     autojump
+    aws
     pip
     ripgrep
     fd
@@ -96,17 +109,17 @@ plugins=(git
 )
 
 # Theme option
-POWERLEVEL9K_DISABLE_RPROMPT=true
+POWERLEVEL9K_DISABLE_RPROMPT=false
 POWERLEVEL9K_HIDE_BRANCH_ICON=true
 POWERLEVEL9K_SHOW_CHANGESET=false
 POWERLEVEL9K_VCS_HIDE_TAGS=true
 POWERLEVEL9K_VCS_SHOW_SUBMODULE_DIRTY=false
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(anaconda)
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 #POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_SHORTEN_DELIMITER=""
 export PROMPT='
-
 $reset_color→ '
 prompt_context () { }
 
@@ -135,13 +148,14 @@ fi
 
 # add completion/preview for a lot of things
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
-zstyle ':fzf-tab:complete:*:*' fzf-flags --preview-window=right --height 99%
+zstyle ':fzf-tab:complete:*:*' fzf-flags --preview-window=right --height=99%
 export LESSOPEN='|~/.lessfilter %s'
 
 # disable preview for command options
 zstyle ':fzf-tab:complete:*:options' fzf-preview
 # disable preview for subcommands
 zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
+zstyle ':fzf-tab:complete:*:argument-2' fzf-preview
 
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
@@ -157,6 +171,12 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
+# disable preview for command options
+zstyle ':fzf-tab:complete:*:options' fzf-preview
+# disable preview for subcommands
+zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
+zstyle ':fzf-tab:complete:*:argument-2' fzf-preview
 
 # User configuration
 
@@ -187,3 +207,22 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # zprof
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

@@ -32,3 +32,6 @@ export FPATH="/usr/local/opt/curl/share/zsh/site-functions:$FPATH"
 
 # opt out telemetry
 export DO_NOT_TRACK=1
+
+# Default AWS profile
+export AWS_PROFILE="default"

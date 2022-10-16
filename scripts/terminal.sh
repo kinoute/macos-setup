@@ -34,6 +34,7 @@ touch ~/.hushlogin
 # copy dotfiles and zshrc
 cp ./dotfiles/* ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}
 cp -f .zshrc ~/
+cp -f .p10k.zsh ~/
 
 ###############################################################################
 # Vim                                                                         #
