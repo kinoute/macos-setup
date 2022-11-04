@@ -66,10 +66,23 @@ export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# ZSH autocomplete settings
+
+zstyle ':autocomplete:*' fzf-completion yes
+# no:  Tab uses Zsh's completion system only.
+# yes: Tab first tries Fzf's completion, then falls back to Zsh's.
+# ⚠️ NOTE: This setting can NOT be changed at runtime and requires that you
+# have installed Fzf's shell extensions.
+
+
+zstyle ':autocomplete:recent-dirs' backend z
+
 # zsh tmux settings
 ZSH_TMUX_AUTOSTART='true'
 export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 
+# Zsh autosuggestions plugin settings
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -89,7 +102,7 @@ export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
     conda-zsh-completion
-    autojump
+    z
     aws
     pip
     ripgrep
@@ -103,6 +116,7 @@ plugins=(git
     fzf
     fzf-tab
     zsh-autosuggestions
+    zsh-autocomplete
     fast-syntax-highlighting
     zsh-completions
     autoupdate
@@ -130,6 +144,22 @@ source $ZSH/oh-my-zsh.sh
 
 # disable ssh auto completion with /etc/hosts
 # zstyle ':completion:*:(ssh|scp|rsync):*' hosts off
+
+# Zsh autocomplete settings
+zstyle ':autocomplete:*' min-input 1  # characters (int)
+# Wait until this many characters have been typed, before showing completions.
+
+zstyle ':completion:*' group-name ''
+
+ zstyle ':autocomplete:list-choices:*' max-lines 100%
+# disable ssh auto completion with /etc/hosts
+# zstyle ':completion:*:(ssh|scp|rsync):*' hosts off
+
+# Up arrow:
+bindkey '\e[A' up-line-or-history
+bindkey '\eOA' up-line-or-history
+# up-line-or-search:  Open history menu.
+# up-line-or-history: Cycle to previous history line.
 
 h=()
 if [[ -r ~/.ssh/config ]]; then
@@ -210,6 +240,9 @@ zstyle ':fzf-tab:complete:*:argument-2' fzf-preview
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Add flux completions
+ . <(flux completion zsh) && compdef _flux flux
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
