@@ -102,9 +102,9 @@ brew install chafa
 brew install csvkit
 brew install tidy-viewer
 brew install dog
+brew install fluxcd/tap/flux
 
 # Core Casks
-brew install --cask flux
 brew install --cask spotify
 brew install --cask vlc
 brew install --cask the-unarchiver
