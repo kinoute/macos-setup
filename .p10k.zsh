@@ -210,19 +210,19 @@
   # Current directory background color.
   typeset -g POWERLEVEL9K_DIR_BACKGROUND=4
   # Default current directory foreground color.
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=254
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=0
   # If directory is too long, shorten some of its segments to the shortest possible unique
   # prefix. The shortened directory can be tab-completed to the original.
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
   # Replace removed segment suffixes with this symbol.
   typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=
   # Color of the shortened directory segments.
-  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=250
+  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=0
   # Color of the anchor directory segments. Anchor segments are never shortened. The first
   # segment is always an anchor.
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=255
+  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=0
   # Display anchor directory segments in bold.
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=true
+  typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=false
   # Don't shorten directories that contain any of these files. They are anchors.
   local anchor_files=(
     .bzr
@@ -267,7 +267,7 @@
   # directory will be shortened only when prompt doesn't fit or when other parameters demand it
   # (see POWERLEVEL9K_DIR_MIN_COMMAND_COLUMNS and POWERLEVEL9K_DIR_MIN_COMMAND_COLUMNS_PCT below).
   # If set to `0`, directory will always be shortened to its minimum length.
-  typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=80
+  typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=0
   # When `dir` segment is on the last prompt line, try to shorten it enough to leave at least this
   # many columns for typing commands.
   typeset -g POWERLEVEL9K_DIR_MIN_COMMAND_COLUMNS=40
