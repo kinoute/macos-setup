@@ -35,3 +35,6 @@ export DO_NOT_TRACK=1
 
 # Default AWS profile
 export AWS_PROFILE="default"
+
+# Kubectl plugins
+export PATH="${PATH}:${HOME}/.krew/bin"
