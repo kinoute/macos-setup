@@ -87,4 +87,5 @@
 	"word_wrap": true,
 	"caret_style": "blink",
 	"draw_shadows": false,
+	"remember_full_screen": true,
 }
