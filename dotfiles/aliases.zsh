@@ -104,7 +104,7 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 alias c="tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files and python cache folders
-alias cleanup="find -E . -regex '.*(\.DS_Store|__pycache__|\.mypy_cache|\.pytest_cache).*' -ls -delete"
+alias cleanup="find -E . -regex '.*(\.DS_Store|__pycache__|\.mypy_cache|\.pytest_cache|~).*' -ls -delete"
 
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.
@@ -138,4 +138,4 @@ alias sshkey="cat ~/.ssh/id_rsa.pub | pbcopy && echo 'SSH Key Copied to clipboar
 alias gfrbi='git rebase -i $(git log --pretty=oneline --color=always | fzf --ansi | cut -d " " -f1)'
 
 # Latest URLs visited with Safari with the date
-alias safarihistory="sqlite3 ~/Library/Safari/History.db 'SELECT datetime(V.visit_time+978307200, \"unixepoch\", \"localtime\") AS datetime, I.url, V.title FROM history_visits V LEFT JOIN history_items I on V.history_item = I.id ORDER BY visit_time DESC LIMIT 100;'"
+alias safarihistory="sqlite3 ~/Library/Safari/History.db 'SELECT datetime(V.visit_time+978307200, \"unixepoch\", \"localtime\") AS datetime, I.url, V.title FROM history_visits V LEFT JOIN history_items I on V.history_item = I.id ORDER BY visit_time DESC LIMIT 500;'"
