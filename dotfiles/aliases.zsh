@@ -23,6 +23,7 @@ alias v='vim'
 alias drmi='docker rm `docker ps -a | grep Exited | grep -o -e "[0-9a-z]\{12\}"`; docker rmi `docker images | grep \<none\> | grep -o -e "[0-9a-z]\{12\}"`'
 alias k='k9s -c context'
 alias dig='dog'
+alias kubectl='kubecolor'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

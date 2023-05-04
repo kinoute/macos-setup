@@ -244,6 +244,13 @@ zstyle ':fzf-tab:complete:*:argument-2' fzf-preview
 # Add flux completions
  . <(flux completion zsh) && compdef _flux flux
 
+# Use kubectl autocompletion with alias "kubecolor"
+compdef kubecolor=kubectl
+
+# Use ssh autocompletions with custom aliases/functions
+compdef ssht=ssh
+compdef sshpf=ssh
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

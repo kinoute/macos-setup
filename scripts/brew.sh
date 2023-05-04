@@ -104,6 +104,7 @@ brew install csvkit
 brew install tidy-viewer
 brew install dog
 brew install fluxcd/tap/flux
+brew install kubecolor/tap/kubecolor
 
 # Core Casks
 brew install --cask spotify
