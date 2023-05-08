@@ -61,7 +61,9 @@
 		"_reports/*",
 		"vendor/*",
 		"node_modules/*",
-		".build/*"
+		".build/*",
+		".mypy_cache/*",
+		"*/htmlcov/*"
 	],
 	"bold_folder_labels": true,
 	"copy_with_empty_selection": true,
