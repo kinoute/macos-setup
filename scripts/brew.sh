@@ -106,6 +106,16 @@ brew install dog
 brew install fluxcd/tap/flux
 brew install kubecolor/tap/kubecolor
 
+# Add kubectl plugins
+kubectl krew index add kvaps https://github.com/kvaps/krew-index
+kubectl krew index add k8s https://github.com/kubernetes-sigs/krew-index
+
+kubectl krew install kvaps/node-shell
+kubectl krew install k8s/who-can
+kubectl krew install k8s/ktop
+kubectl krew install k8s/ice
+kubectl krew install k8s/kubescape
+
 # Core Casks
 brew install --cask spotify
 brew install --cask vlc
