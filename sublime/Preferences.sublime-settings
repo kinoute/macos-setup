@@ -13,7 +13,6 @@
 		"Mooon Light Theme",
 		"Nord",
 		"Phpcs",
-		"Pretty Shell",
 		"python-black",
 		"rsub",
 		"Rust",
@@ -63,7 +62,8 @@
 		"node_modules/*",
 		".build/*",
 		".mypy_cache/*",
-		"*/htmlcov/*"
+		"*/htmlcov/*",
+		".pytest_cache/*"
 	],
 	"bold_folder_labels": true,
 	"copy_with_empty_selection": true,

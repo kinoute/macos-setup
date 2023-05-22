@@ -105,6 +105,7 @@ brew install tidy-viewer
 brew install dog
 brew install fluxcd/tap/flux
 brew install kubecolor/tap/kubecolor
+brew install eslint
 
 # Add kubectl plugins
 kubectl krew index add kvaps https://github.com/kvaps/krew-index

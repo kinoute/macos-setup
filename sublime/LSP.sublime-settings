@@ -1,4 +1,5 @@
 {
+    "lsp_format_on_save": true,
     "clients": {
         "gopls": {
             "enabled": true,
