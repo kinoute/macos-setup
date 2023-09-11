@@ -1,9 +1,15 @@
 {
+    "lsp_code_actions_on_save": {
+        "source.fixAll": true,
+        "source.organizeImports": true,
+    },
     "lsp_format_on_save": true,
     "clients": {
         "gopls": {
             "enabled": true,
-            "command": ["/Users/kinoute/sites/go/bin/gopls"],
+            "command": [
+                "/Users/kinoute/sites/go/bin/gopls"
+            ],
             "selector": "source.go",
             "initializationOptions": {
                 "experimentalWorkspaceModule": false
