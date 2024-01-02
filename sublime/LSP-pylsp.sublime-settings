@@ -1,28 +1,33 @@
 // Settings in here override those in "LSP-pylsp/LSP-pylsp.sublime-settings"
-
 {
     "language_servers": {
         "pylsp": {
             "serverSettings": {
                 "pylsp.plugins.pydocstyle.enabled": false,
                 "pylsp.plugins.pyflakes.enabled": false,
-                "pylsp.plugins.flake8.enabled": true,
+                "pylsp.plugins.flake8.enabled": false,
                 "pylsp.plugins.pycodestyle.enabled": false,
+                "pylsp.plugins.autopep8.enabled": false,
+                "pylsp.plugins.ruff.enabled": true,
             },
         },
     },
     "settings": {
-        "pylsp.configurationSources": ["flake8"],
+        "pylsp.configurationSources": [
+            "flake8"
+        ],
+        "pylsp.plugins.autopep8.enabled": false,
+        "pylsp.plugins.ruff.enabled": true,
         "pylsp.plugins.pydocstyle.enabled": false,
         "pylsp.plugins.pyflakes.enabled": false,
-        "pylsp.plugins.flake8.enabled": true,
+        "pylsp.plugins.flake8.enabled": false,
         "pylsp.plugins.pycodestyle.enabled": false,
         "language_servers": {
             "pylsp": {
                 "serverSettings": {
                     "pylsp.plugins.pydocstyle.enabled": false,
                     "pylsp.plugins.pyflakes.enabled": false,
-                    "pylsp.plugins.flake8.enabled": true,
+                    "pylsp.plugins.flake8.enabled": false,
                     "pylsp.plugins.pycodestyle.enabled": false,
                 },
             },

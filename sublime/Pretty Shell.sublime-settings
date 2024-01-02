@@ -1,5 +1,7 @@
 {
     "pretty_on_save": true,
+    "format_on_save": true,
+    "simplify": true,
     "indent": 2,
     "rediop": true
 }

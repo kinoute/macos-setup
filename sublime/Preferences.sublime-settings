@@ -1,33 +1,22 @@
 {
 	"theme": "Hivacruz.sublime-theme",
 	"color_scheme": "Packages/Hivacruz Theme/Hivacruz.sublime-color-scheme",
-	"ignored_packages":
-	[
+	"ignored_packages": [
 		"All Autocomplete",
 		"AutoPEP8",
-		"Better CoffeeScript",
-		"ColorHints",
-		"Elixir",
 		"isorted",
-		"JavaScriptNext - ES6 Syntax",
 		"LSP-pyright",
-		"Mooon Light Theme",
-		"Nord",
-		"Phpcs",
 		"python-black",
 		"rsub",
 		"Rust",
-		"Rust Enhanced",
-		"SublimeLinter-contrib-bashate",
+		"sublack",
+		"SublimeLinter-flake8",
 		"SublimeLinter-pylint",
-		"Swift",
 		"Vintage",
-		"Vue Syntax Highlight",
 	],
 	"auto_complete": true,
 	"auto_complete_commit_on_tab": true,
-	"auto_complete_triggers":
-	[
+	"auto_complete_triggers": [
 		{
 			"characters": ".(){}[],'\"=<>/\\+-|&*%=$#@! ",
 			"selector": "source.python",
@@ -42,8 +31,7 @@
 		}
 	],
 	"always_show_minimap_viewport": false,
-	"binary_file_patterns":
-	[
+	"binary_file_patterns": [
 		"*.jpg",
 		"*.jpeg",
 		"*.png",
@@ -72,8 +60,7 @@
 	"font_face": "RobotoMono-Regular",
 	"font_size": 12,
 	"hot_exit": false,
-	"indent_guide_options":
-	[
+	"indent_guide_options": [
 		"draw_normal",
 		"draw_active"
 	],
@@ -81,11 +68,11 @@
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
 	"mini_diff": false,
-	"open_files_in_new_window": false,
+	"open_files_in_new_window": "always",
 	"overlay_scroll_bars": "enabled",
 	"tab_size": 4,
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true,
+	"trim_trailing_white_space_on_save": "all",
 	"update_check": false,
 	"word_wrap": true,
 	"caret_style": "blink",

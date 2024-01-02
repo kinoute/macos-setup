@@ -159,7 +159,6 @@ brew install shellcheck
 brew install shfmt
 
 # Format Python code
-brew install black
 brew install pre-commit
 
 # Go code
