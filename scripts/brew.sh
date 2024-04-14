@@ -106,6 +106,10 @@ brew install dog
 brew install fluxcd/tap/flux
 brew install kubecolor/tap/kubecolor
 brew install eslint
+brew install noahgorstein/tap/jqp
+brew install kind
+brew install danielfoehrkn/switch/switch
+brew install terraform
 
 # Add kubectl plugins
 kubectl krew index add kvaps https://github.com/kvaps/krew-index

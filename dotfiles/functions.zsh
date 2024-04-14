@@ -72,9 +72,9 @@ function s() {
   if [ -z "$1" ]; then
     [ -n "$subl_project" ] && subl "$subl_project" && return 0
     # No sublime project found, open whole folder
-    subl .
+    subl . --command toggle_full_screen
   else
-    subl "$1"
+    subl "$1" --command toggle_full_screen
   fi
 }
 

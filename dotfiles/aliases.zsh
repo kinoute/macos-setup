@@ -24,6 +24,8 @@ alias drmi='docker rm `docker ps -a | grep Exited | grep -o -e "[0-9a-z]\{12\}"`
 alias k='k9s -c context'
 alias dig='dog'
 alias kubectl='kubecolor'
+alias date='gdate'
+alias kcuc='switch set-context'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -105,7 +107,7 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 alias c="tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files and python cache folders
-alias cleanup="find -E . -regex '.*(\.DS_Store|__pycache__|\.mypy_cache|\.pytest_cache|~).*' -ls -delete"
+alias cleanup="find -E . -regex '.*(\.DS_Store|__pycache__|\.mypy_cache|\.pytest_cache|~|\.ruff_cache).*' -ls -delete"
 
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.
