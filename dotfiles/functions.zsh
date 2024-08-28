@@ -68,6 +68,13 @@ function extract () {
 
 # Better alias to open sublime text projects
 function s() {
+  # Check if environment.yml exists
+  if [ -f "environment.yml" ]; then
+    # Extract the environment name using yq and activate it
+    env_name=$(yq eval '.name' environment.yml)
+    conda activate "$env_name"
+  fi
+
   subl_project=$(ls | grep "sublime-project" | head -n 1)
   if [ -z "$1" ]; then
     [ -n "$subl_project" ] && subl "$subl_project" && return 0
