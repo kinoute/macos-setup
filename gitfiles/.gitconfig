@@ -33,3 +33,5 @@
     program = /usr/local/bin/gpg
 [commit]
     gpgsign = true
+[merge]
+    conflictStyle = zdiff3
