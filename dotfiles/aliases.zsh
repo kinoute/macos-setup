@@ -141,4 +141,4 @@ alias sshkey="cat ~/.ssh/id_rsa.pub | pbcopy && echo 'SSH Key Copied to clipboar
 alias gfrbi='git rebase -i $(git log --pretty=oneline --color=always | fzf --ansi | cut -d " " -f1)'
 
 # Latest URLs visited with Safari with the date
-alias safarihistory="sqlite3 ~/Library/Safari/History.db 'SELECT datetime(V.visit_time+978307200, \"unixepoch\", \"localtime\") AS datetime, I.url, V.title FROM history_visits V LEFT JOIN history_items I on V.history_item = I.id ORDER BY visit_time DESC LIMIT 500;'"
+alias safarihistory="sqlite3 ~/Library/Safari/History.db \"SELECT datetime(V.visit_time+978307200, 'unixepoch', 'localtime') AS datetime, I.url, V.title FROM history_visits V LEFT JOIN history_items I ON V.history_item = I.id ORDER BY visit_time DESC LIMIT 1000;\""
