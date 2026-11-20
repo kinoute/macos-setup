@@ -323,50 +323,11 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 # Disable 'natural' (Lion-style) scrolling"
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
-###############################################################################
-# Sublime Text                                                                #
-###############################################################################
-
-# Open and close Sublime Text quickly to generate folders
-open -a "Sublime Text"
-sleep 5
-osascript -e 'tell app "Sublime Text" to quit'
-
-# Download Package Control manually
-wget -q https://packagecontrol.io/Package%20Control.sublime-package -P ~/Library/Application\ Support/Sublime\ Text/Installed\ Packages
-
-# Install Sublime Text settings
-rm -rf ~/Library/Application\ Support/Sublime\ Text/Packages/User/*
-cp -r ./sublime/* ~/Library/Application\ Support/Sublime\ Text/Packages/User/
-
-# create cli shortcuts
-ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
-
-###############################################################################
-# Transmission.app                                                            #
-###############################################################################
-
-# Trash original torrent files
-defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
-
-# Hide the donate message
-defaults write org.m0k.transmission WarningDonate -bool false
-
-# Hide the legal disclaimer
-defaults write org.m0k.transmission WarningLegal -bool false
-
-# Download to downloads folder
-defaults write org.m0k.transmission DownloadLocationConstant -bool true
-defaults write org.m0k.transmission DownloadChoice -string 'Constant'
-defaults write org.m0k.transmission DownloadFolder -string '~/Downloads'
-
-# Ip Block List
-defaults write org.m0k.transmission BlocklistNew -bool true
-defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
-defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
-
-# Randomize port on launch
-defaults write org.m0k.transmission RandomPort -bool true
+#*****************************************************************************
+# App-specific tweaks live in their own scripts now:
+#   - Sublime Text: apps.sh installs it; sublime/ holds the User settings
+#   - iTerm2:       apps.sh installs it; iterm/ holds profile & colors
+#*****************************************************************************
 
 ###############################################################################
 # Kill affected applications                                                  #
