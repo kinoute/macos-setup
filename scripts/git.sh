@@ -4,22 +4,16 @@
 # Configure Git                                                               #
 ###############################################################################
 
-# no gitconfig yet, copy template and ask infos
+set -uo pipefail
+cd "$(dirname "$0")/.."
+
+# Copy gitconfig template (user block included)
 if [ ! -f ~/.gitconfig ]; then
-
-  # Copy gitignore and gitconfig template files
-  sudo cp -r -f ./gitfiles/.git* ~/
-
-  # Set-up name
-  read -p "Enter your Full Name for Git: " name
-  git config --global user.name "$name"
-
-  # Set-up email
-  read -p "Enter your Email for Git: " email
-  git config --global user.email "$email"
-
+  cp -f ./gitfiles/.gitconfig ~/
 fi
 
-# add gpg-agent config
-mkdir ~/.gnupg
-cp ./gpg-agent.conf ~/.gnupg/gpg-agent.conf
+# GPG agent config for signing (key lives in 1Password/GPG Keychain)
+mkdir -p ~/.gnupg
+[ -f ~/.gnupg/gpg-agent.conf ] || cp -f ./gpg-agent.conf ~/.gnupg/gpg-agent.conf
+
+echo "Git setup done."
