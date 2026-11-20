@@ -1,202 +1,186 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Use HomeBrew to install every package/app needed                            #
+# Install every Homebrew formula this Mac relies on                          #
+# Generated from the live machine (Nov 2026) - sync with `brew leaves`       #
 ###############################################################################
 
-# Check for Homebrew,
-# Install if we don't have it
-# Force the deletion of potential old homebrew installation
-rm -rf /opt/homebrew
-if test ! $(which brew); then
+set -uo pipefail
+
+# Check for Homebrew, install if we don't have it
+if ! test -x "$(command -v brew)"; then
   echo "Installing homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Make sure we’re using the latest Homebrew.
 brew update
 
-# Upgrade any already-installed formulae.
-brew upgrade
+###############################################################################
+# Third-party taps                                                           #
+# Recent Homebrew refuses untrusted taps: trust them first                   #
+###############################################################################
+brew trust fluxcd/tap          2>/dev/null || true
+brew trust norwoodj/tap        2>/dev/null || true
+brew trust danielfoehrkn/switch 2>/dev/null || true
+brew trust alesbrelih/gitlab-ci-ls 2>/dev/null || true
+brew trust robusta-dev/krr     2>/dev/null || true
+brew trust jadolg/tap          2>/dev/null || true
+brew trust steipete/tap        2>/dev/null || true
+brew trust jurplel/homebrew-tap 2>/dev/null || true
+brew trust sdenike/homebrew-tap 2>/dev/null || true
+brew trust go-task/homebrew-tap 2>/dev/null || true
 
-## Install cask
-brew install cask
+###############################################################################
+# Kubernetes & GitOps                                                        #
+###############################################################################
+brew install fluxcd/tap/flux
+brew install helm
+brew install helm-ls
+brew install norwoodj/tap/helm-docs
+brew install kustomize
+brew install krew
+brew install kubecolor
+brew install kubeseal
+brew install kubeconform
+brew install kubevious
+brew install kind
+brew install kubectl
+brew install robusta-dev/krr/krr
+brew install prometheus
+brew install terraform
+brew install ansible
+brew install cmctl
+brew install cdk8s
+brew install sops
+brew install mkcert
+brew install danielfoehrkn/switch/switch   # switcher / kcuc alias
 
-# Install GNU core utilities (those that come with OS X are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+# kubectl plugins (best effort - krew index handling changed in 0.4+)
+kubectl krew index add kvaps https://github.com/kvaps/krew-index 2>/dev/null || true
+kubectl krew index add k8s https://github.com/kubernetes-sigs/krew-index 2>/dev/null || true
+for plugin in \
+  k8s/access-matrix k8s/blame k8s/browse-pvc k8s/cnpg k8s/deprecations \
+  k8s/df-pv k8s/duplicate k8s/get-all k8s/ice k8s/ktop k8s/kubescape \
+  k8s/view-secret k8s/view-serviceaccount-kubeconfig k8s/who-can \
+  kvaps/node-shell
+do
+  kubectl krew install "$plugin" 2>/dev/null || echo "krew plugin $plugin failed"
+done
 
-# Install some other useful utilities like `sponge`.
-brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed
+###############################################################################
+# CI / scanning / security                                                   #
+###############################################################################
+brew install git-crypt
+brew install git-filter-repo
+brew install gitleaks
+brew install hadolint
+brew install trivy
+brew install age
+brew install binwalk
+brew install tesseract
 
-# languages
-brew install python
-brew install php
+###############################################################################
+# Languages & runtimes                                                       #
+###############################################################################
 brew install go
-brew install zsh
 brew install node
+brew install python@3.11
+brew install uv
+brew install ipython
+brew install jq
+brew install yq
+brew install prettier
+brew install python-lsp-server
+brew install golangci-lint
+brew install goreleaser
+brew install shellcheck
+brew install shfmt
+brew install pre-commit
+brew install eslint
+brew install k6
+brew install awscli
+brew install awscli@1
+brew install scw
+brew install s5cmd
+brew install step
+brew install openjdk
+brew install basictex 2>/dev/null || brew install --cask basictex
 
-# Install more recent versions of some OS X tools.
-brew install vim
+###############################################################################
+# Kubernetes-adjacent cloud tools                                            #
+###############################################################################
+brew install gitlab-ci-ls 2>/dev/null || brew install alesbrelih/gitlab-ci-ls/gitlab-ci-ls
+brew install bore-cli
+
+###############################################################################
+# Dev environment utilities                                                  #
+###############################################################################
+brew install coreutils    # gdate, gsed, ... (used by aliases)
+brew install findutils
+brew install gnu-sed
+brew install gawk
 brew install grep
 brew install openssh
 brew install screen
-brew reinstall curl
-
-# Install other useful binaries.
+brew install tmux
+brew install htop
+brew install watch
+brew install ncdu
+brew install pv
+brew install tree
+brew install rename
+brew install wget
+brew install curl
+brew install ffmpeg
+brew install graphviz
+brew install exiftool
+brew install poppler
+brew install qpdf
+brew install protobuf
+brew install dive
+brew install nmap
+brew install lesspipe
+brew install lnav
+brew install csvkit
+brew install csvlens
+brew install xsv
+brew install tidy-viewer
+brew install chafa
+brew install eza
+brew install fd
+brew install ripgrep
+brew install the_silver_searcher
+brew install fzf
+brew install bat
+brew install autojump
+brew install entr
+brew install lsyncd
+brew install ssh-copy-id
+brew install subversion
+brew install xcodegen
 brew install bfg
+brew install ghidra
+brew install jadx
+brew install cmake
+brew install pkgconf
+brew install libmagic
+brew install moreutils
+brew install mas
+brew install pinentry-mac
+brew install terminal-notifier
+brew install doggo
+
+###############################################################################
+# Git                                                                        #
+###############################################################################
 brew install git
 brew install git-lfs
 brew install git-flow
 brew install git-extras
 brew install git-delta
-brew install lazygit
-brew install imagemagick
-brew install pv
-brew install rename
-brew install ssh-copy-id
-brew install tree
-brew install pandoc
-brew install jq
-brew install yq
-brew install ffmpeg
-brew install ripgrep
-brew install tmux
-brew install bat
-brew install exa
-brew install wget
-brew install watch
-brew install mas
-brew install fzf
-brew install htop
-brew install fd
-brew install autojump
-brew install ncdu
-brew install ipython
-brew install gpg
-brew install pinentry
-brew install pinentry-mac
-brew install lnav
-brew install ag
-brew install xsv
-brew install youtube-dl
-brew install hadolint
-brew install jupyter
-brew install svn
-brew install dive
-brew install nmap
-brew install lesspipe
-brew install exiftool
-brew install k9s
-brew install kubectl
-brew install kustomize
-brew install krew
-brew install kubeseal
-brew install chafa
-brew install csvkit
-brew install tidy-viewer
-brew install dog
-brew install fluxcd/tap/flux
-brew install kubecolor/tap/kubecolor
-brew install eslint
-brew install noahgorstein/tap/jqp
-brew install kind
-brew install danielfoehrkn/switch/switch
-brew install terraform
+brew install gh
+brew install glab
 
-# Add kubectl plugins
-kubectl krew index add kvaps https://github.com/kvaps/krew-index
-kubectl krew index add k8s https://github.com/kubernetes-sigs/krew-index
-
-kubectl krew install kvaps/node-shell
-kubectl krew install k8s/who-can
-kubectl krew install k8s/ktop
-kubectl krew install k8s/ice
-kubectl krew install k8s/kubescape
-
-# Core Casks
-brew install --cask spotify
-brew install --cask vlc
-brew install --cask the-unarchiver
-brew install --cask lulu
-brew install --cask onyx
-brew install --cask transmission
-brew install --cask slack
-brew install --cask ngrok
-
-# Markdown editor
-brew install typora
-
-# Apps fom Mac App Store
-mas install '1440147259' # Adguard For Safari
-
-# Remove mouse acceleration
-brew tap homebrew/cask-drivers
-brew install --cask steelseries-exactmouse-tool
-
-# Development tool casks
-brew install --cask iterm2
-brew install --cask sublime-text
-brew install --cask virtualbox
-brew install --cask brave-browser
-brew install --cask miniconda
-brew install --cask visual-studio-code
-
-# Correct PHP code
-brew install php-cs-fixer
-brew install php-code-sniffer
-brew install phpcbf
-brew install phpmd
-
-# Fix Ruby Code
-gem install rubocop
-
-# Fix Shell scripts
-brew install shellcheck
-brew install shfmt
-
-# Format Python code
-brew install pre-commit
-
-# Go code
-brew install golangci-lint
-brew install goreleaser
-
-# Install Docker, which requires virtualbox
-brew install --cask docker
-brew install docker-compose
-brew install lazydocker
-
-# Fonts
-brew tap homebrew/cask-fonts
-brew install --cask font-roboto-mono-nerd-font
-brew install --cask font-roboto-mono-for-powerline
-brew install font-roboto
-
-# Better quick look support
-brew install --cask qlcolorcode
-brew install --cask qlstephen
-brew install --cask qlmarkdown
-brew install --cask quicklook-json
-brew install --cask qlprettypatch
-brew install --cask qlvideo
-brew install --cask suspicious-package
-brew install --cask webpquicklook
-brew install --cask quicklook-csv
-brew install --cask betterzip
-
-# sse jupyter notebooks from quicklook
-brew install --cask jupyter-notebook-viewer
-
-# restart quick look
-qlmanage -r
-
-# Remove outdated versions from the cellar.
 brew cleanup
