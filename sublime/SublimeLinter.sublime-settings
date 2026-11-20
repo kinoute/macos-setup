@@ -1,10 +1,16 @@
 // SublimeLinter Settings - User
 {
-    "linters":
-    {
+    "linters": {
+        "mypy": {
+            "disable": false,
+            "lint_mode": "background"
+        },
         "flake8": {
             "ignore_fixables": false,
-            "args": ["--stdin-display-name", "${file:stdin}"]
+            "args": [
+                "--stdin-display-name",
+                "${file:stdin}"
+            ]
         }
     },
     "debug": true

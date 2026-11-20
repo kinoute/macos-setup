@@ -3,6 +3,7 @@
 	"color_scheme": "Packages/Hivacruz Theme/Hivacruz.sublime-color-scheme",
 	"ignored_packages": [
 		"All Autocomplete",
+		"AutomaticFullscreen",
 		"AutoPEP8",
 		"isorted",
 		"LSP-pyright",
@@ -14,6 +15,7 @@
 		"SublimeLinter-pylint",
 		"Vintage",
 	],
+	"auto_find_in_selection": true,
 	"auto_complete": true,
 	"auto_complete_commit_on_tab": true,
 	"auto_complete_triggers": [
@@ -64,7 +66,7 @@
 		"draw_normal",
 		"draw_active"
 	],
-	"index_files": true,
+	"index_files": false,
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
 	"mini_diff": false,
@@ -78,4 +80,7 @@
 	"caret_style": "blink",
 	"draw_shadows": false,
 	"remember_full_screen": true,
+	"file_icon_theme":
+	[
+	],
 }
