@@ -14,52 +14,52 @@ alias pip=pip3
 alias cat="bat --style=plain --paging=never --italic-text=always"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias top=htop
-alias cp='cp -iv'
+# alias cp='cp -iv'
 alias mv='mv -iv'
 alias r='refresh'
 alias o='open .'
 alias h='history'
 alias v='vim'
 alias drmi='docker rm `docker ps -a | grep Exited | grep -o -e "[0-9a-z]\{12\}"`; docker rmi `docker images | grep \<none\> | grep -o -e "[0-9a-z]\{12\}"`'
-alias k='k9s -c context'
-alias dig='dog'
+alias k='k9s -c context --all-namespaces'
+alias dig='doggo'
 alias kubectl='kubecolor'
 alias date='gdate'
 alias kcuc='switch set-context'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
-  colorflag="--color"
-  export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
+    colorflag="--color"
+    export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
 else # macOS `ls`
-  colorflag="-G"
-  export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
+    colorflag="-G"
+    export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 fi
 
 # List all files colorized in long format
-if [[ ! -x "$(command -v exa)" ]]; then
-  alias l="ls -lF ${colorflag}"
-  alias ld="ls -lfash ${colorflag} */"
-  alias lf="ls -lfash ${colorflag} -p | grep -v '/'"
+if [[ ! -x "$(command -v eza)" ]]; then
+    alias l="ls -lF ${colorflag}"
+    alias ld="ls -lfash ${colorflag} */"
+    alias lf="ls -lfash ${colorflag} -p | grep -v '/'"
 else
-  alias l="exa -l -h --icons --classify -a --ignore-glob='.DS_Store' --color always"
-  alias ld="exa -l -h --icons --classify -a -d --color always */"
-  alias lf="exa -l -h --icons --classify -a --color always | grep -v '/'"
+    alias l="eza -l -h --icons --classify -a --ignore-glob='.DS_Store' --color always"
+    alias ld="eza -l -h --icons --classify -a -d --color always */"
+    alias lf="eza -l -h --icons --classify -a --color always | grep -v '/'"
 
-  # Tree replacements
-  TREE_IGNORE=".git|cache|log|logs|node_modules|vendor"
+    # Tree replacements
+    TREE_IGNORE=".git|cache|log|logs|node_modules|vendor"
 
-  # Folders
-  alias ldt='l --tree -D -L 2 -I ${TREE_IGNORE}'
-  alias ldtt='l --tree -D -L 3 -I ${TREE_IGNORE}'
-  alias ldttt='l --tree -D -L 4 -I ${TREE_IGNORE}'
-  alias ldtttt='l --tree -D -L 5 -I ${TREE_IGNORE}'
+    # Folders
+    alias ldt='l --tree -D -L 2 -I ${TREE_IGNORE}'
+    alias ldtt='l --tree -D -L 3 -I ${TREE_IGNORE}'
+    alias ldttt='l --tree -D -L 4 -I ${TREE_IGNORE}'
+    alias ldtttt='l --tree -D -L 5 -I ${TREE_IGNORE}'
 
-  # With files
-  alias lt='l --tree -L 2 --group-directories-first -I ${TREE_IGNORE}'
-  alias ltt='l --tree -L 3 --group-directories-first -I ${TREE_IGNORE}'
-  alias lttt='l --tree -L 4 --group-directories-first -I ${TREE_IGNORE}'
-  alias ltttt='l --tree -L 5 --group-directories-first -I ${TREE_IGNORE}'
+    # With files
+    alias lt='l --tree -L 2 --group-directories-first -I ${TREE_IGNORE}'
+    alias ltt='l --tree -L 3 --group-directories-first -I ${TREE_IGNORE}'
+    alias lttt='l --tree -L 4 --group-directories-first -I ${TREE_IGNORE}'
+    alias ltttt='l --tree -L 5 --group-directories-first -I ${TREE_IGNORE}'
 fi
 
 # Always use color output for `ls`
@@ -104,10 +104,13 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
 
 # Trim new lines and copy to clipboard
-alias c="tr -d '\n' | pbcopy"
+alias c="pbcopy"
+
+alias zedv='"$HOME/Applications/Zed Dev.app/Contents/MacOS/cli"'
+alias zed-fork="$HOME/Sites/zed/.fork/zed-fork"
 
 # Recursively delete `.DS_Store` files and python cache folders
-alias cleanup="find -E . -regex '.*(\.DS_Store|__pycache__|\.mypy_cache|\.pytest_cache|~|\.ruff_cache).*' -ls -delete"
+alias cleanup="find -E . -regex '.*(\.DS_Store|__pycache__|\.mypy_cache|\.pytest_cache|\.ruff_cache|\.ropeproject|\.mypy_django_scratch).*' -ls -delete"
 
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.

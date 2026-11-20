@@ -1,166 +1,134 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# =============================================================================
+# PERFORMANCE & INSTANT PROMPT
+# =============================================================================
+# Uncomment to profile zsh startup time
+# zmodload zsh/zprof
+
+# Enable Powerlevel10k instant prompt (must be near top)
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# zmodload zsh/zprof
-# If you come from bash you might have to change your $PATH.
-
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# =============================================================================
+# OH-MY-ZSH CONFIGURATION
+# =============================================================================
+export ZSH="$HOME/.oh-my-zsh"
 DEFAULT_USER=kinoute
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# Theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# zsh tmux settings
-ZSH_TMUX_AUTOSTART='true'
-export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
+# Performance optimizations
+DISABLE_AUTO_UPDATE="true"
+DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_COMPFIX="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# ZSH autocomplete settings
-
-zstyle ':autocomplete:*' fzf-completion yes
-# no:  Tab uses Zsh's completion system only.
-# yes: Tab first tries Fzf's completion, then falls back to Zsh's.
-# ⚠️ NOTE: This setting can NOT be changed at runtime and requires that you
-# have installed Fzf's shell extensions.
-
-
-zstyle ':autocomplete:recent-dirs' backend z
-
-# zsh tmux settings
-ZSH_TMUX_AUTOSTART='true'
-export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
-
-# Zsh autosuggestions plugin settings
+# Autosuggestions
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+# Tmux integration
+ZSH_TMUX_AUTOSTART='true'
+export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git
-    conda-zsh-completion
+# =============================================================================
+# PLUGINS
+# =============================================================================
+plugins=(
+    git
     z
-    aws
-    pip
-    ripgrep
-    fd
+    fluxcd
     python
     macos
     kubectl
-    sublime
     docker
     docker-compose
     fzf
-    fzf-tab
     zsh-autosuggestions
     zsh-autocomplete
-    fast-syntax-highlighting
     zsh-completions
     autoupdate
+    fast-syntax-highlighting
 )
 
-# Theme option
-POWERLEVEL9K_DISABLE_RPROMPT=false
-POWERLEVEL9K_HIDE_BRANCH_ICON=true
-POWERLEVEL9K_SHOW_CHANGESET=false
-POWERLEVEL9K_VCS_HIDE_TAGS=true
-POWERLEVEL9K_VCS_SHOW_SUBMODULE_DIRTY=false
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(anaconda)
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-export PROMPT='
-$reset_color→ '
-prompt_context () { }
-
+# =============================================================================
+# COMPLETION SETUP (before oh-my-zsh)
+# =============================================================================
 fpath=(/opt/homebrew/opt/curl/share/zsh/site-functions/ $fpath)
+fpath=(/opt/homebrew/opt/awscli@1/share/zsh/site-functions $fpath)
 fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
 
+# Load Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# =============================================================================
+# FAST COMPSINIT (skip full audit + dump unless >24h old)
+# Must run before oh-my-zsh; the no-op below makes omz's compinit a no-op.
+# =============================================================================
+export ZSH_DISABLE_COMPFIX=true
+autoload -Uz compinit
+if [[ -n "$HOME/.zcompdump"(#qN.mh+24) ]]; then
+  compinit -C -d "$HOME/.zcompdump"
+else
+  compinit -d "$HOME/.zcompdump"
+fi
+compinit() { : }
+
+# Source oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# disable ssh auto completion with /etc/hosts
-# zstyle ':completion:*:(ssh|scp|rsync):*' hosts off
+# =============================================================================
+# ZSH-AUTOCOMPLETE CONFIGURATION
+# =============================================================================
+zstyle ':autocomplete:*' fzf-completion yes
+zstyle ':autocomplete:recent-dirs' backend z
+zstyle ':autocomplete:*' min-input 1
+zstyle ':autocomplete:list-choices:*' max-lines 100%
 
-# Zsh autocomplete settings
-zstyle ':autocomplete:*' min-input 1  # characters (int)
-# Wait until this many characters have been typed, before showing completions.
-
+# Group completions
 zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '[%d]'
 
- zstyle ':autocomplete:list-choices:*' max-lines 100%
-# disable ssh auto completion with /etc/hosts
-# zstyle ':completion:*:(ssh|scp|rsync):*' hosts off
+# Colorize completions
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
-# Up arrow:
-bindkey '\e[A' up-line-or-history
-bindkey '\eOA' up-line-or-history
-# up-line-or-search:  Open history menu.
-# up-line-or-history: Cycle to previous history line.
+# Disable ssh auto-completion with /etc/hosts
+zstyle ':completion:*:(ssh|scp|rsync):*' hosts off
 
+# =============================================================================
+# FZF-TAB CONFIGURATION
+# =============================================================================
+# Default preview with less
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+zstyle ':fzf-tab:complete:*:*' fzf-flags --preview-window=right --height=99%
+export LESSOPEN='|~/.lessfilter %s'
+
+# Disable preview for options and subcommands
+zstyle ':fzf-tab:complete:*:options' fzf-preview
+zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
+zstyle ':fzf-tab:complete:*:argument-2' fzf-preview
+
+# Enhanced cd preview
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+
+# Git checkout sorting
+zstyle ':completion:*:git-checkout:*' sort false
+
+# Switch groups with comma and period
+zstyle ':fzf-tab:*' switch-group ',' '.'
+
+# =============================================================================
+# DOCKER COMPLETION
+# =============================================================================
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+zstyle ':omz:plugins:docker' legacy-completion yes
+
+# =============================================================================
+# SSH HOST COMPLETION
+# =============================================================================
 h=()
 if [[ -r ~/.ssh/config ]]; then
   h=($h ${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
@@ -173,111 +141,120 @@ if [[ $#h -gt 0 ]]; then
   zstyle ':completion:*:scp:*' hosts $h
   zstyle ':completion:*:rsync:*' hosts $h
   zstyle ':completion:*:ssht:*' hosts $h
+  zstyle ':completion:*:sshpf:*' hosts $h
   zstyle ':completion:*:slogin:*' hosts $h
 fi
 
-# add completion/preview for a lot of things
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
-zstyle ':fzf-tab:complete:*:*' fzf-flags --preview-window=right --height=99%
-export LESSOPEN='|~/.lessfilter %s'
+# =============================================================================
+# KEY BINDINGS
+# =============================================================================
+# Up arrow: search history
+bindkey '\e[A' up-line-or-history
+bindkey '\eOA' up-line-or-history
 
-# disable preview for command options
-zstyle ':fzf-tab:complete:*:options' fzf-preview
-# disable preview for subcommands
-zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
-zstyle ':fzf-tab:complete:*:argument-2' fzf-preview
+# =============================================================================
+# CUSTOM COMPLETIONS
+# =============================================================================
+# Function to generate and cache completions
+generate_completion() {
+    local cmd=$1
+    local comp_file="$ZSH_CACHE_DIR/completions/_${cmd}"
+    local omz_file="$HOME/.oh-my-zsh/completions/_${cmd}"
 
-# disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':fzf-tab:complete:*:options' fzf-preview ''
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-# switch group using `,` and `.`
-zstyle ':fzf-tab:*' switch-group ',' '.'
+    if [[ ! -f $comp_file ]]; then
+        case $cmd in
+            flux)
+                flux completion zsh > "$omz_file" 2>/dev/null && cp "$omz_file" "$comp_file"
+                ;;
+            switcher)
+                switcher init zsh > "$omz_file" 2>/dev/null && cp "$omz_file" "$comp_file"
+                ;;
+            uv)
+                uv generate-shell-completion zsh > "$omz_file" 2>/dev/null && cp "$omz_file" "$comp_file"
+                ;;
+            switch)
+                switch completion zsh > "$omz_file" 2>/dev/null && cp "$omz_file" "$comp_file"
+                ;;
+            kubectl)
+                kubectl completion zsh > "$comp_file" 2>/dev/null
+                cp "$comp_file" "$ZSH_CACHE_DIR/completions/_kubecolor"
+                ;;
+            scw)
+                # le script embarque "autoload -U compinit && compinit" qu'on supprime pour ne pas relancer un compinit complet au startup
+                scw autocomplete script 2>/dev/null | grep -v '^autoload -U compinit' > "$omz_file" && cp "$omz_file" "$comp_file"
+                ;;
+        esac
+    fi
+}
 
-zstyle ':completion:*:*:docker:*' option-stacking yes
-zstyle ':completion:*:*:docker-*:*' option-stacking yes
+# Generate completions
+for cmd in flux switcher uv switch kubectl scw; do
+    generate_completion $cmd
+done
 
-# disable preview for command options
-zstyle ':fzf-tab:complete:*:options' fzf-preview
-# disable preview for subcommands
-zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
-zstyle ':fzf-tab:complete:*:argument-2' fzf-preview
+# Source completions
+for comp in kubectl kubecolor flux uv switch switcher scw; do
+    [[ -f "$ZSH_CACHE_DIR/completions/_${comp}" ]] && source "$ZSH_CACHE_DIR/completions/_${comp}"
+done
 
-# User configuration
+# Fix uv completion: disable "show all possibilities" prompt
+zstyle ':completion:*:*:uv:*' list-prompt ''
+zstyle ':completion:*:*:uv:*' select-prompt ''
+zstyle ':completion:*:*:uv:*' menu yes select
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# Source switcher plugin
+[[ -f "$ZSH_CUSTOM/plugins/switch/switcher.zsh" ]] && source "$ZSH_CUSTOM/plugins/switch/switcher.zsh"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# zprof
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Add flux completions
- . <(flux completion zsh) && compdef _flux flux
-
-# Use kubectl autocompletion with alias "kubecolor"
+# =============================================================================
+# COMMAND ALIASES FOR COMPLETION
+# =============================================================================
 compdef kubecolor=kubectl
-
-# Use ssh autocompletions with custom aliases/functions
 compdef ssht=ssh
 compdef sshpf=ssh
+compdef k=k9s
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
+# =============================================================================
+# HISTORY CONFIGURATION
+# =============================================================================
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000000
+export HISTFILESIZE=10000000
 
-# Scaleway CLI autocomplete initialization.
-eval "$(scw autocomplete script shell=zsh)"
+setopt HIST_FIND_NO_DUPS
+setopt INC_APPEND_HISTORY
 
-# pnpm
-export PNPM_HOME="/Users/kinoute/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+# =============================================================================
+# POWERLEVEL10K THEME
+# =============================================================================
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-source <(switcher init zsh)
-source <(compdef _switcher switch)
+# =============================================================================
+# NODE VERSION MANAGER
+# =============================================================================
+export NVM_DIR="$HOME/.nvm"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-unset CONDA_SHLVL
+# Uncomment to profile zsh startup time
+# zprof
+
+# Added by Antigravity
+export PATH="/Users/kinoute/.antigravity/antigravity/bin:$PATH"
+
+# strix (avant mise activate, sinon strix passe devant les tools mise)
+export PATH=/Users/kinoute/.strix/bin:$PATH
+
+export MISE_NO_UPDATE_CHECK=1
+export AUBE_NO_UPDATE_CHECK=1
+# mise lazy: shims sur le PATH immédiatement, activation complète à la 1ère commande (-250 ms au startup)
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+_mise_lazy_init() {
+  add-zsh-hook -d preexec _mise_lazy_init
+  unset -f _mise_lazy_init
+  eval "$(mise activate zsh)"
+}
+add-zsh-hook preexec _mise_lazy_init
+
+# Tokens MCP pour Codex (sourced depuis le keychain, mêmes entrées que Claude Code)
+export YOUTRACK_MCP_TOKEN="Bearer $(security find-generic-password -s youtrack-mcp -w)"
+export OUTLINE_MCP_TOKEN="Bearer $(security find-generic-password -s outline-mcp -w)"
+
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) export PATH="$HOME/.local/bin:$PATH" ;; esac

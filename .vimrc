@@ -18,7 +18,7 @@ Plugin 'kinoute/vim-hivacruz-theme'
 
 " Productivity
 Plugin 'tpope/vim-commentary'
-Plugin 'zxqfl/tabnine-vim'
+" Plugin 'zxqfl/tabnine-vim'  " 2021 YCM fork, cassé sous Python 3.15
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'mtth/scratch.vim'
@@ -80,6 +80,11 @@ set foldnestmax=10
 set foldlevel=1
 " set foldcolumn=2
 
+" fzf
+let g:fzf_layout = { 'down': '40%' }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }
+nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
+
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'hivacruz'
@@ -100,10 +105,6 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " git gutter
 let g:gitgutter_highlight_lines = 0
-
-" fzf
-let g:fzf_layout = { 'down': '40%' }
-nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
 
 map <C-n> :NERDTreeToggle<CR>
 

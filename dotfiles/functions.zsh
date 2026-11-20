@@ -13,7 +13,7 @@ function ac() {
 function acp() {
   git add .
   git commit -m "$*"
-  git push origin master
+  git push
 }
 
 # create folder and enter it
@@ -79,19 +79,17 @@ function s() {
   if [ -z "$1" ]; then
     [ -n "$subl_project" ] && subl "$subl_project" && return 0
     # No sublime project found, open whole folder
-    subl . --command toggle_full_screen
+    subl .
   else
-    subl "$1" --command toggle_full_screen
+    subl "$1"
   fi
 }
 
-# Use Tmux for remote SSH connections
 function ssht() {
     tmux_session_name=${2:-"remote"}
-    ssh -t "$1" "which tmux 2>&1 > /dev/null && tmux -u -CC new -A -s $tmux_session_name"
+    /usr/bin/ssh -t "$1" "which tmux 2>&1 > /dev/null && tmux -u -CC new -A -s $tmux_session_name"
 }
 
-# Simplest port foward function
 function sshpf() {
   ssh -L $2:127.0.0.1:$2 $1 -N -f -o "ExitOnForwardFailure yes"
   if [ $? != "0" ]; then
@@ -135,14 +133,181 @@ function ff() {
   [ -n "${selected}" ] && subl $(echo "$filenames" | xargs)
 }
 
-
 # find pattern with "age pattern" and open files with vim tabs
-age() {
+fage() {
     vim \
         +'/\v'"${1/\//\\/}" \
         +':silent tabdo :1 | normal! n' \
         +':tabfirst' \
         -p $(ag "$@" | cut -d: -f1 | sort -u)
+}
+
+# Generate empty Kubernetes secret file
+function gensecret() {
+  cat <<EOF > $1.yaml.secret
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ${1//secret-/}
+  namespace: sahar-app
+stringData:
+  TEST: abc
+EOF
+subl "$1.yaml.secret"
+}
+
+# Seal secrets
+function seal() {
+  if [ ! -f "$HOME/Documents/Infra/Kubeseal/$1.pem" ]; then
+    echo "$1.pem doesn't exist"
+    return
+  fi
+
+  if [ ! -f "$2" ]; then
+    echo "$2 doesn't exist"
+    return
+  fi
+
+  sealed_secret="${2//.secret/}"
+  kubeseal --cert "$HOME/Documents/Infra/Kubeseal/$1.pem" < "$2" > "$sealed_secret" -o yaml
+
+  if [ "$?" -eq 0 ]; then
+    echo "Secret $2 was sealed"
+
+    # Don't open kustomization.yaml if it's already there
+    [[ $(cat kustomization.yaml | grep -c "$sealed_secret") -ne 0 ]] && return
+
+    # Add the sealed secret to kustomization.yaml
+    echo "Adding secret to kustomization.yaml:"
+    yq eval ".resources += [\"$sealed_secret\"]" -i kustomization.yaml
+    # Sort entries
+    yq eval '.resources |= sort' -i kustomization.yaml
+
+  fi
+
+}
+
+# Unseal a Secret into a .secret file, to edit then `seal`. The source is a
+# SealedSecret file from git, or <namespace>/<name> read from the cluster. The
+# SealedSecret is decrypted with the controller keys and compared, key by key,
+# with the Secret that runs: nothing is written unless they agree.
+function unseal() {
+  local context=$1 source=$2
+  if [[ -z "$context" || -z "$source" ]]; then
+    echo "usage: unseal <context> <sealed-secret.yaml | namespace/name>"
+    return 1
+  fi
+
+  local sealed out name namespace
+  if [[ -f "$source" ]]; then
+    sealed=$(< "$source")
+    out="$source.secret"
+    name=$(print -r -- "$sealed" | yq 'select(.kind == "SealedSecret") | .metadata.name')
+    namespace=$(print -r -- "$sealed" | yq 'select(.kind == "SealedSecret") | .metadata.namespace')
+    if [[ -z "$name" || "$name" == *$'\n'* || "$namespace" == null ]]; then
+      echo "$source must hold exactly one SealedSecret, with a namespace"
+      return 1
+    fi
+  elif [[ "$source" == */* ]]; then
+    namespace=${source%%/*} name=${source#*/}
+    out="secret-$name.yaml.secret"
+    sealed=$(kubectl --context "$context" -n "$namespace" \
+      get sealedsecrets.bitnami.com "$name" -o yaml 2>/dev/null)
+  else
+    echo "$source is neither a file nor namespace/name"
+    return 1
+  fi
+
+  # Private keys stay in this variable and in pipes, never on disk.
+  local keys
+  keys=$(kubectl --context "$context" -n kube-system get secret \
+    -l sealedsecrets.bitnami.com/sealed-secrets-key -o yaml) || return 1
+
+  local live
+  live=$(kubectl --context "$context" -n "$namespace" get secret "$name" -o json) || return 1
+
+  local template
+  if [[ -n "$sealed" ]]; then
+    local unsealed
+    if ! unsealed=$(print -r -- "$sealed" | kubeseal --recovery-unseal \
+      --recovery-private-key <(print -r -- "$keys") -o json); then
+      echo "No key of $context decrypts $namespace/$name: it was sealed with another cluster's certificate"
+      return 1
+    fi
+
+    # Names only: values never reach the terminal.
+    local differing
+    differing=$({ print -r -- "$unsealed"; print -r -- "$live"; } | jq -rs '
+      (.[0].data // {}) as $sealed | (.[1].data // {}) as $live
+      | ($sealed + $live | keys[]) | select($sealed[.] != $live[.])')
+    if [[ -n "$differing" ]]; then
+      echo "The SealedSecret and the Secret disagree on $namespace/$name, keys: ${differing//$'\n'/, }"
+      echo "Deliberate: unseal won't pick which one is right. If the live Secret is, read it with:"
+      echo "  kubectl --context $context -n $namespace get secret $name -o json | jq '.data | map_values(@base64d)'"
+      return 1
+    fi
+
+    # Metadata from the SealedSecret template, so `seal` produces no stray diff.
+    template=$(print -r -- "$sealed" | yq -o json '.spec.template')
+  else
+    echo "No SealedSecret $namespace/$name on $context: taking the live Secret as is"
+    template=$(print -r -- "$live" | jq '{type, metadata: {labels: .metadata.labels,
+      annotations: (.metadata.annotations // {}
+        | del(."kubectl.kubernetes.io/last-applied-configuration")
+        | if . == {} then null else . end)}}')
+  fi
+
+  # stringData is text: a binary value would not survive the round trip.
+  local binary
+  binary=$(print -r -- "$live" | jq -r '.data // {} | to_entries[]
+    | select((.value | @base64d | @base64) != .value) | .key')
+  if [[ -n "$binary" ]]; then
+    echo "Binary keys, edit them by hand: ${binary//$'\n'/, }"
+    return 1
+  fi
+
+  # A local .secret can be the only copy of a value that never reached git.
+  if [[ -f "$out" ]]; then
+    local stale
+    stale=$({ print -r -- "$live"; yq -o json '.' "$out"; } | jq -rs '
+      (.[0].data // {}) as $live
+      | ((.[1].data // {}) + (.[1].stringData // {} | map_values(@base64))) as $local
+      | ($live + $local | keys[]) | select($live[.] != $local[.])')
+    if [[ -n "$stale" ]]; then
+      echo "$out already exists and differs from the cluster on: ${stale//$'\n'/, }"
+      echo "Move it away first if the cluster is right."
+      return 1
+    fi
+  fi
+
+  { print -r -- "$template"; print -r -- "$live"; } | jq -s '
+    .[0] as $template | .[1] as $secret
+    | {apiVersion: "v1", kind: "Secret",
+       metadata: ({name: $secret.metadata.name, namespace: $secret.metadata.namespace}
+         + ({labels: $template.metadata.labels, annotations: $template.metadata.annotations}
+            | with_entries(select(.value != null))))}
+    + (if $template.type then {type: $template.type} else {} end)
+    + {stringData: ($secret.data // {} | map_values(@base64d))}' | yq -P > "$out"
+
+  # seal uses this certificate offline: a foreign one is how 19 SealedSecrets
+  # ended up undecryptable.
+  local pem="$HOME/Documents/Infra/Kubeseal/$context.pem"
+  if [[ -f "$pem" ]]; then
+    local pem_fingerprint known_fingerprints
+    pem_fingerprint=$(openssl x509 -in "$pem" -noout -fingerprint -sha256)
+    known_fingerprints=$(print -r -- "$keys" | yq '.items[].data."tls.crt"' | while read -r cert; do
+      print -r -- "$cert" | base64 -d | openssl x509 -noout -fingerprint -sha256
+    done)
+    if ! grep -qxF -- "$pem_fingerprint" <<< "$known_fingerprints"; then
+      echo "WARNING: $pem matches no key of $context, seal would produce a SealedSecret it cannot decrypt"
+    fi
+  else
+    echo "WARNING: $pem is missing, seal will refuse"
+  fi
+
+  local seal_command="seal $context ${out:t}"
+  [[ "${out:h}" != . ]] && seal_command="cd ${out:h} && $seal_command"
+  echo "Wrote $out. Edit it, then: $seal_command"
 }
 
 function lazy_load() {
@@ -158,7 +323,7 @@ function lazy_load() {
     # Single line won't work: local names=("${(@s: :)${1}}"). Due to http://stackoverflow.com/questions/14917501/local-arrays-in-zsh   (zsh 5.0.8 (x86_64-apple-darwin15.0))
     local -a names
     if [[ -n "$ZSH_VERSION" ]]; then
-        names=("${(@s: :)${1}}")
+        names=("${(@s::)${1}}")
     else
         names=($1)
     fi
@@ -175,4 +340,41 @@ function group_lazy_load() {
     for cmd in "$@"; do
         alias $cmd="lazy_load \"$*\" $script $cmd"
     done
+}
+
+# Add IP route to OpenVPN whitelist
+function wl() {
+  local ovpn_file="/Users/kinoute/Library/Application Support/OpenVPN Connect/profiles/1790447436226.ovpn"
+  local ip="$1"
+  local comment="$2"
+
+  # Validate arguments
+  if [[ -z "$ip" ]]; then
+    echo "Usage: wl <ip> [comment]"
+    echo "Example: wl 1.2.3.4 \"K8s cluster\""
+    return 1
+  fi
+
+  # Check if IP already exists in the file
+  if grep -q "route $ip " "$ovpn_file" 2>/dev/null; then
+    echo "IP $ip is already in the whitelist"
+    return 1
+  fi
+
+  # Build the route line
+  local route_line="route $ip 255.255.255.255 vpn_gateway"
+  if [[ -n "$comment" ]]; then
+    route_line="$route_line # $comment"
+  fi
+
+  # Append to the file
+  echo "$route_line" >> "$ovpn_file"
+  echo "Added: $route_line"
+
+  # Restart OpenVPN Connect
+  echo "Restarting OpenVPN Connect..."
+  osascript -e 'quit app "OpenVPN Connect"'
+  sleep 1
+  open -a "OpenVPN Connect"
+  echo "Done. Please reconnect to VPN if needed."
 }
