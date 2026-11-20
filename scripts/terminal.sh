@@ -1,84 +1,89 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# My Zsh                                                                      #
+# Zsh, oh-my-zsh plugins, tmux and editor dotfiles                           #
+# Run from the repo root                                                     #
 ###############################################################################
 
-# Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+set -uo pipefail
+cd "$(dirname "$0")/.."
 
-# Auto-suggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+ZSH_CUSTOM=~/.oh-my-zsh/custom
 
-# syntax highlightings
-git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+###############################################################################
+# Oh My Zsh                                                                    #
+###############################################################################
+[ -d ~/.oh-my-zsh ] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-# fish live suggestion/completions
-git clone https://github.com/marlonrichert/zsh-autocomplete ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete
+# Theme
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM}/themes/powerlevel10k 2>/dev/null || true
 
-# completions
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+# Plugins
+for plugin in \
+  "https://github.com/zsh-users/zsh-autosuggestions zsh-autosuggestions" \
+  "https://github.com/zdharma-continuum/fast-syntax-highlighting.git fast-syntax-highlighting" \
+  "https://github.com/marlonrichert/zsh-autocomplete zsh-autocomplete" \
+  "https://github.com/zsh-users/zsh-completions zsh-completions" \
+  "https://github.com/Aloxaf/fzf-tab fzf-tab" \
+  "https://github.com/esc/conda-zsh-completion conda-zsh-completion" \
+  "https://github.com/TamCore/autoupdate-oh-my-zsh-plugins autoupdate"
+do
+  set -- $plugin
+  [ -d "${ZSH_CUSTOM}/plugins/$2" ] || git clone --depth=1 "$1" "${ZSH_CUSTOM}/plugins/$2" 2>/dev/null || true
+done
 
-# fzf tab completion
-git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+# Custom switcher plugin (kubecontext switch / kcuc alias helper)
+mkdir -p ${ZSH_CUSTOM}/plugins/switch
+cp -f ./dotfiles/switcher.zsh ${ZSH_CUSTOM}/plugins/switch/
 
-# conda zsh completions
-git clone https://github.com/esc/conda-zsh-completion ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/conda-zsh-completion
+###############################################################################
+# Auto-loaded oh-my-zsh custom files (aliases, exports, functions, ...)      #
+###############################################################################
+for f in aliases.zsh exports.zsh functions.zsh private.zsh ssh_tab_colors.zsh; do
+  cp -f "./dotfiles/$f" "${ZSH_CUSTOM}/$f"
+done
 
-# auto update third party plugins
-git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
-
-# Install PowerLevel10k theme
-git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/powerlevel10k
-
-# Make terminal faster
+###############################################################################
+# Shell dotfiles                                                               #
+###############################################################################
+cp -f .zshrc ~/.zshrc
+cp -f .p10k.zsh ~/.p10k.zsh
+cp -f .vimrc ~/.vimrc
+cp -f .lessfilter ~/.lessfilter
 touch ~/.hushlogin
 
-# copy dotfiles and zshrc
-cp ./dotfiles/* ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}
-cp -f .zshrc ~/
-cp -f .p10k.zsh ~/
+###############################################################################
+# Git config                                                                   #
+###############################################################################
+bash scripts/git.sh
 
 ###############################################################################
-# Vim                                                                         #
+# Tmux                                                                         #
+# Live layout: ~/.tmux/{tmux.conf,tmux.remote.conf,...} + ~/.tmux.conf symlink#
 ###############################################################################
+mkdir -p ~/.tmux
+cp -f ./tmux/tmux.conf ./tmux/tmux.remote.conf ./tmux/renew_env.sh ./tmux/yank.sh ~/.tmux/
+chmod +x ~/.tmux/renew_env.sh ~/.tmux/yank.sh
+ln -sf ~/.tmux/tmux.conf ~/.tmux.conf
 
-# install VIM Plugins Manager
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# TPM + plugins (explicit clones so recovery doesn't depend on tpm state)
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+  git clone --depth=1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+for plugin in \
+  "tmux-plugins/tmux-sensible" \
+  "tmux-plugins/tmux-resurrect" \
+  "tmux-plugins/tmux-prefix-highlight" \
+  "tmux-plugins/tmux-battery" \
+  "tmux-plugins/tmux-copycat" \
+  "tmux-plugins/tmux-open" \
+  "tmux-plugins/tmux-sidebar" \
+  "samoshkin/tmux-plugin-sysstat"
+do
+  name=$(basename "$plugin")
+  if [ ! -d "~/.tmux/plugins/$name" ]; then
+    git clone --depth=1 "https://github.com/$plugin" ~/.tmux/plugins/$name 2>/dev/null || true
+  fi
+done
 
-# Copy my setup
-cp -f .vimrc ~/
-
-# Install plugins
-vim +PluginInstall +qall
-
-###############################################################################
-# Terminal & iTerm 2                                                          #
-###############################################################################
-
-# Only use UTF-8 in Terminal.app
-defaults write com.apple.terminal StringEncodings -array 4
-
-# Copy iterm Settings
-sudo cp -f ./iterm/com.googlecode.iterm2.plist ~/Library/Preferences/
-
-# Install Hivacruz theme for iTerm
-open -a iTerm ./iterm/Hivacruz.itermcolors
-
-# Install k9s custom skin based on Nord theme
-cp -f ./iterm/k9s-skin.yml ~/Library/Application\ Support/k9s/skin.yml
-
-# Install custom bat config and theme
-mkdir ~/.config || true
-cp -rf ./iterm/bat ~/.config || true
-bat cache --build
-
-# Install lessfilter for better preview
-cp -f .lessfilter ~/
-
-# Misc rc files
-cp -f .condarc ~/
-cp -f .gemrc ~/
-cp -f .screenrc ~/
-cp -f .wgetrc ~/
-cp -f .tmux.conf ~/
+echo "Terminal setup done. Open a new shell to apply."
