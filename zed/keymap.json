@@ -1,0 +1,119 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-t": "file_finder::Toggle",
+      "shift-cmd-r": "project_symbols::Toggle",
+      // Currently busted: https://github.com/zed-industries/feedback/issues/898
+      "ctrl-0": "project_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-shift-enter": "workspace::ToggleZoom",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-/": [
+        "editor::ToggleComments",
+        {
+          "advance_downwards": false,
+        },
+      ],
+    },
+  },
+  {
+    "context": "(Editor && mode == full)",
+    "bindings": {
+      "cmd-:": "agent::AddSelectionToThread",
+    },
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "cmd-:": "agent::AddSelectionToThread",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-:": "agent::AddSelectionToThread",
+    },
+  },
+  {
+    "context": "AgentPanel",
+    "unbind": {
+      "cmd-/": "agent::AddSelectionToThread",
+    },
+  },
+  {
+    "context": "Editor && mode == full",
+    "unbind": {
+      "cmd-/": "agent::AddSelectionToThread",
+    },
+  },
+  {
+    // cmd-k clears the terminal, but it is also the prefix of 26 chords defined in
+    // the Workspace and Pane contexts (both ancestors of Terminal in the dispatch
+    // tree). gpui therefore waits ~1s for a possible second keystroke before firing
+    // terminal::Clear. Masking those chords here removes the ambiguity, so the clear
+    // is instant. Editor chords (cmd-k cmd-0, cmd-k cmd-q...) are deliberately kept:
+    // the Editor context is not active when the terminal has focus.
+    // Re-check against `zed: open default keymap` after a Zed upgrade — a single new
+    // cmd-k chord brings the delay back. Generated for Zed 1.14.2.
+    "context": "Terminal",
+    "bindings": {
+      "cmd-k": "terminal::Clear",
+      // from Workspace
+      "cmd-k s": null,
+      "cmd-k n": null,
+      "cmd-k m": null,
+      "cmd-k cmd-p": null,
+      "cmd-k cmd-s": null,
+      "cmd-k cmd-t": null,
+      "cmd-k cmd-shift-t": null,
+      "cmd-k cmd-m": null,
+      "cmd-k cmd-left": null,
+      "cmd-k cmd-right": null,
+      "cmd-k cmd-up": null,
+      "cmd-k cmd-down": null,
+      "cmd-k shift-left": null,
+      "cmd-k shift-right": null,
+      "cmd-k shift-up": null,
+      "cmd-k shift-down": null,
+      // from Pane
+      "cmd-k e": null,
+      "cmd-k t": null,
+      "cmd-k u": null,
+      "cmd-k w": null,
+      "cmd-k cmd-w": null,
+      "cmd-k shift-enter": null,
+      "cmd-k up": null,
+      "cmd-k down": null,
+      "cmd-k left": null,
+      "cmd-k right": null,
+    },
+  },
+  {
+    "context": "ThreadSwitcher",
+    "bindings": {
+      "down": "agents_sidebar::ToggleThreadSwitcher"
+    }
+  },
+  {
+    "context": "ThreadSwitcher",
+    "unbind": {
+      "ctrl-tab": "agents_sidebar::ToggleThreadSwitcher"
+    }
+  }
+]

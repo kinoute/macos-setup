@@ -1,0 +1,509 @@
+{
+  "dev": {
+    "agent": { "open_threads_in": "center" }
+  },
+  "use_display_p3": true,
+  "show_edit_predictions": true,
+  "proxy": "",
+  "markdown_preview": {
+    "font_size": 11.5,
+    "open_markdown_files_in_preview": true
+  },
+  "edit_predictions": {
+    "zed": {
+      "prediction_debounce": 300
+    },
+    "disabled_globs": ["**/*.md"],
+    "allow_data_collection": "no",
+    "provider": "copilot",
+    "open_ai_compatible_api": {
+      "prompt_format": "qwen",
+      "max_output_tokens": 256,
+      "model": "Qwen/Qwen3.8-27B-FP8",
+      "api_url": "https://llm.shr-dir.com/v1/completions"
+    }
+  },
+  "fullscreen_mode": "native",
+  "preview_tabs": {
+    "enable_preview_multibuffer_from_code_navigation": true,
+    "enable_preview_from_file_finder": true,
+    "enable_preview_from_git_panel": true,
+  },
+  "redact_private_values": false,
+  "cli_default_open_behavior": "existing_window",
+  "outline_panel": {
+    "dock": "left",
+  },
+  "diff_view_style": "unified",
+  "file_types": {
+    "Helm": [
+      "**/templates/**/*.tpl",
+      "**/templates/**/*.yaml",
+      "**/templates/**/*.yml",
+      "**/helmfile.d/**/*.yaml",
+      "**/helmfile.d/**/*.yml",
+      "**/values*.yaml",
+    ],
+  },
+  "autoscroll_on_clicks": true,
+  "minimum_contrast_for_highlights": 0.0,
+  "unnecessary_code_fade": 0.9,
+  "use_system_window_tabs": false,
+  "tab_bar": {
+    "show_nav_history_buttons": false,
+    "show": true,
+  },
+  "title_bar": {
+    "show_branch_name": true,
+    "show_branch_status_icon": false,
+    "show_menus": false,
+    "show_user_picture": true,
+    "show_user_menu": true,
+    "show_project_items": true,
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": false,
+    },
+  },
+  "preferred_line_length": 88,
+  "soft_wrap": "editor_width",
+  "scroll_beyond_last_line": "off",
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "restore_on_startup": "last_session",
+  "prettier": {
+    "allowed": true,
+  },
+  "agent_servers": {
+    "mistral-vibe": {
+      "type": "registry",
+    },
+    "codex-acp": {
+      "default_config_options": {
+        "collaboration_mode": "default",
+        "mode": "agent-full-access",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "xhigh",
+      },
+      "type": "registry",
+    },
+    "gemini": {
+      "default_mode": "plan",
+      "type": "registry",
+    },
+    "claude-acp": {
+      "env": { "CLAUDE_CODE_ENABLE_TODO_TOOLS": "1" },
+      "favorite_config_option_values": {
+        "mode": [
+          "plan",
+          "bypassPermissions"
+        ]
+      },
+      "default_config_options": {
+        "ultracode": false,
+        "agent": "default",
+        "fast": false,
+        "effort": "xhigh",
+        "model": "opus",
+        "mode": "bypassPermissions",
+      },
+      "type": "registry",
+      "default_mode": "bypassPermissions",
+    },
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/.repo",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/__pycache__",
+    "**/.mypy_cache",
+    "**/.pytest_cache",
+    "**/.ropeproject",
+    "**/.ruff_cache",
+  ],
+  "project_panel": {
+    "dock": "left",
+    "auto_reveal_entries": false,
+    "bold_folder_labels": false,
+    "starts_open": true,
+    "entry_spacing": "comfortable",
+    "hide_hidden": false,
+    "hide_gitignore": false,
+  },
+  "context_servers": {
+    "*": { "enabled": false },
+  },
+  "icon_theme": "Colored Zed Icons Theme Dark",
+  "journal": {
+    "hour_format": "hour24",
+  },
+  "base_keymap": "SublimeText",
+  "collaboration_panel": {
+    "dock": "left",
+    "button": false,
+  },
+  "git_panel": {
+    "show_count_badge": false,
+    "entry_primary_click_action": "file_diff",
+    "file_icons": false,
+    "dock": "left",
+    "fallback_branch_name": "dev",
+  },
+  "linked_edits": false,
+  "git": {
+    "auto_fetch": {
+      "enabled": true,
+      "interval_secs": 300,
+    },
+    "blame": {
+      "show_avatar": false,
+    },
+    "inline_blame": {
+      "show_commit_summary": false,
+      "enabled": false,
+    },
+  },
+  "tabs": {
+    "show_diagnostics": "off",
+    "file_icons": true,
+    "git_status": false,
+    "activate_on_close": "neighbour",
+  },
+  "languages": {
+    "JavaScript": {
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+    "TypeScript": {
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+    "TSX": {
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+    "JSON": { "formatter": { "language_server": { "name": "prettier" } } },
+    "CSS": { "formatter": { "language_server": { "name": "biome" } } },
+    "HTML": {
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+    "YAML": {
+      "language_servers": ["yaml-language-server", "!docker-compose"],
+    },
+    "HTML+ERB": {
+      "formatter": [
+        {
+          "external": { "command": "herb-format", "arguments": ["-"] },
+        },
+      ],
+    },
+    "Shell Script": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "shfmt",
+          "arguments": [
+            "--filename",
+            "{buffer_path}",
+            "--indent",
+            "4",
+            "--space-redirects",
+          ],
+        },
+      },
+    },
+    "Markdown": {
+      "format_on_save": "on",
+      "use_on_type_format": false,
+      "allow_rewrap": "anywhere",
+      "soft_wrap": "editor_width",
+      "prettier": { "allowed": true },
+    },
+
+    "Git Commit": {
+      "soft_wrap": "none",
+      "preferred_line_length": null,
+      "allow_rewrap": "in_comments",
+    },
+
+    "Ruby": {
+      "language_servers": ["ruby-lsp", "!solargraph"],
+      "format_on_save": "off",
+    },
+
+    "Python": {
+      "language_servers": ["!ty", "!pyright", "pylsp", "ruff"],
+      "format_on_save": "on",
+      "formatter": [
+        { "language_server": { "name": "ruff" } },
+        { "code_action": "source.organizeImports.ruff" },
+        { "code_action": "source.fixAll.ruff" },
+      ],
+    },
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        // Check only the crate of the saved file, not the whole workspace:
+        // on Zed that is 200+ crates and tens of GB in target/debug.
+        "check": { "workspace": false },
+      },
+    },
+    "biome": {
+      "settings": {
+        "require_config_file": true,
+      },
+    },
+    "ruff": {
+      "initialization_options": {
+        "config-file": "pyproject.toml",
+      },
+      "settings": {
+        "python": {
+          "pythonPath": "./.venv/bin/python",
+        },
+      },
+    },
+
+    "pylsp": {
+      "binary": {
+        "path": "./.venv/bin/pylsp",
+      },
+      "settings": {
+        "python": {
+          "pythonPath": "./.venv/bin/python",
+        },
+        "plugins": {
+          "pylsp_mypy": {
+            "enabled": true,
+            "live_mode": true,
+            "strict": false,
+            "dmypy": false,
+          },
+          "rope": { "enabled": false },
+          "jedi": { "enabled": false },
+          "autopep8": { "enabled": false },
+          "black": { "enabled": false },
+          "flake8": { "enabled": false },
+          "isort": { "enabled": false },
+          "pylint": { "enabled": false },
+        },
+      },
+    },
+    "ruby-lsp": {
+      "binary": {
+        "path": "/usr/bin/env",
+        "arguments": ["BUNDLE_GEMFILE=Gemfile", "/Users/kinoute/.local/bin/mise", "x", "--", "ruby-lsp"],
+      },
+    },
+    "solargraph": {
+      "binary": {
+        "path": "/Users/kinoute/.local/bin/mise",
+        "arguments": ["x", "--", "solargraph", "stdio"],
+      },
+    },
+  },
+  "ui_font_size": 14,
+  "buffer_font_size": 12,
+  "buffer_font_family": "RobotoMono Nerd Font Mono",
+  "ui_font_family": ".SystemUIFont",
+
+  "theme": "Hivacruz",
+
+  "indent_guides": {
+    "enabled": true,
+    "line_width": 1,
+    "active_line_width": 1,
+    "coloring": "indent_aware",
+    "background_coloring": "disabled",
+  },
+  "show_wrap_guides": false,
+
+  "terminal": {
+    "copy_on_select": true,
+    "max_scroll_history_lines": 100000,
+    "font_family": "RobotoMono Nerd Font Mono",
+    "font_size": 11,
+    "starts_open": true,
+    "detect_venv": {
+      "on": {
+        "venv_name": ".venv",
+        "activate_script": "pyenv",
+        "directories": [".venv", "venv"],
+      },
+    },
+  },
+  "cursor_blink": true,
+
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "agent": {
+    "threads_sidebar": {
+      "position": "right"
+    },
+    "tool_permissions": {
+      "default": "allow",
+      "tools": {
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^grep\\b"
+            },
+            {
+              "pattern": "^sed\\b"
+            },
+            {
+              "pattern": "^echo\\s+===(\\s|$)"
+            },
+            {
+              "pattern": "^echo\\s+CLEAN(\\s|$)"
+            },
+            {
+              "pattern": "^echo\\b"
+            }
+          ]
+        }
+      }
+    },
+    "default_model": {
+      "provider": "Crowpus",
+      "model": "claude-opus-5-5",
+      "enable_thinking": true
+    },
+    "sandbox_permissions": {
+      "allow_unsandboxed": false,
+      "network_hosts": [
+        "*.shr.space",
+        "*.shr-int.com",
+        "*.shr-dir.com",
+        "*.shr-mon.com",
+        "whatthemovie.com",
+        "wtm3.test"
+      ],
+      "allow_fs_write_all": true
+    },
+    "dock": "right",
+    "show_turn_stats": false,
+    "default_width": 640.0,
+    "play_sound_when_agent_done": "always",
+    "enable_feedback": false,
+    "default_profile": "write",
+    "profiles": {
+      "write": {
+        "name": "Write",
+        "tools": {
+          "search_web": true,
+          "copy_path": true,
+          "create_directory": true,
+          "delete_path": true,
+          "diagnostics": true,
+          "edit_file": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": true,
+          "move_path": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "grep": true,
+          "terminal": true,
+          "thinking": true,
+          "open": true,
+        },
+        "enable_all_context_servers": false,
+      },
+    },
+    "commit_message_model": {
+      "provider": "Sahar Qwen3",
+      "model": "Qwen/Qwen3.8-27B-FP8",
+      "effort": "low",
+      "speed": "fast",
+    },
+    "notify_when_agent_waiting": "primary_screen",
+  },
+
+  "language_models": {
+    "anthropic_compatible": {
+      "Crowpus": {
+        "api_url": "https://crowpus.crowlingo.com",
+        "available_models": [
+          {
+            "name": "claude-opus-5",
+            "max_tokens": 1000000,
+            "max_output_tokens": 32000,
+            "extra_beta_headers": [],
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "prompt_caching": false
+            }
+          }
+        ]
+      }
+    },
+    "openai_compatible": {
+      "Sahar Qwen3": {
+        "api_url": "https://llm.shr-dir.com/v1",
+        "available_models": [
+          {
+            "name": "Qwen/Qwen3.8-27B-FP8",
+            "max_tokens": 256000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
+      "Sahar": {
+        "api_url": "https://llm.shr-dir.com/v1",
+        "available_models": [
+          {
+            "name": "Qwen/Qwen3.8-27B-FP8",
+            "display_name": "Qwen 3.8 27B FP8",
+            "max_tokens": 256000,
+            "reasoning_effort": "xhigh",
+            "capabilities": {
+              "interleaved_reasoning": true,
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
+    },
+    "mistral": {
+      "api_url": "https://api.mistral.ai/v1",
+    },
+  },
+}

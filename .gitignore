@@ -1,1 +1,11 @@
 .DS_Store
+*.log
+sublime/*.sublime-workspace
+sublime/*.sublime-project
+zed/settings.json.bak*
+zed/keymap.json.bak*
+zed/settings_backup.json
+zed/development_credentials
+zed/conversations/
+zed/prompts/
+zed/debug.json
